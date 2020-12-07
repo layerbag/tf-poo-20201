@@ -11,4 +11,8 @@ public class Gerente {
     public void removeTarefa(Tarefa t){
         tarefaDiaria.remove(t);
     }
+
+    public static void retornaTarefas(int nivel){
+        
+    }
 }
