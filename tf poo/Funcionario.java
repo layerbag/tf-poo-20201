@@ -1,57 +1,50 @@
-import java.sql.Time;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Funcionario extends Pessoa{
     private int nivel;
-    private Time horasTrabalhadas;
-    private int cargaHorariaDiaria;
     private int horasExtras;
     private Tarefa tarefa;
-    private Time horaEntrada;
+    private Date horaEntrada;
     private boolean naEmpresa;
 
 
-    public Funcionario(String cpf, String nome, int idade, double salario, int nivel, Time horasTrabalhadas, int cargaHorariaDiaria, int horasExtras, Tarefa tarefa, Time horaEntrada, boolean naEmpresa) {
+    public Funcionario(String cpf, String nome, int idade, double salario, int nivel, int horasExtras, Tarefa tarefa, boolean naEmpresa) {
         super(cpf, nome, idade, salario);
         this.nivel = nivel;
-        this.horasTrabalhadas = horasTrabalhadas;
-        this.cargaHorariaDiaria = cargaHorariaDiaria;
         this.horasExtras = horasExtras;
         this.tarefa = tarefa;
-        this.horaEntrada = horaEntrada;
         this.naEmpresa = naEmpresa;
     }
 
 
-    public Funcionario(int nivel, int cargaHorariaDiaria, boolean naEmpresa) {
+    public Funcionario(int nivel, boolean naEmpresa) {
         this.nivel = nivel;
-        this.cargaHorariaDiaria = cargaHorariaDiaria;
         this.naEmpresa = naEmpresa;
     }
 
 
+    public double calculaSalario(double valorHoraExtra){
+        return super.getSalario() + valorHoraExtra*this.horasExtras;
+    }
 
+    public void batePonto(){
+        this.horaEntrada = new Date();
+    }
+
+    public void finalizaExpediente(){
+        Date horaAtual = new Date();
+        
+    }
+
+
+    
     public int getNivel() {
         return this.nivel;
     }
 
     public void setNivel(int nivel) {
         this.nivel = nivel;
-    }
-
-    public Time getHorasTrabalhadas() {
-        return this.horasTrabalhadas;
-    }
-
-    public void setHorasTrabalhadas(Time horasTrabalhadas) {
-        this.horasTrabalhadas = horasTrabalhadas;
-    }
-
-    public int getCargaHorariaDiaria() {
-        return this.cargaHorariaDiaria;
-    }
-
-    public void setCargaHorariaDiaria(int cargaHorariaDiaria) {
-        this.cargaHorariaDiaria = cargaHorariaDiaria;
     }
 
     public int getHorasExtras() {
@@ -70,11 +63,11 @@ public class Funcionario extends Pessoa{
         this.tarefa = tarefa;
     }
 
-    public Time getHoraEntrada() {
+    public Date getHoraEntrada() {
         return this.horaEntrada;
     }
 
-    public void setHoraEntrada(Time horaEntrada) {
+    public void setHoraEntrada(Date horaEntrada) {
         this.horaEntrada = horaEntrada;
     }
 

@@ -1,18 +1,20 @@
 import java.sql.Time;
+import java.util.Date;
 
 public class Tarefa {
     private int idTarefa;
     private int nivel;
     private int horasNecessarias;
-    private Time horasTrabalhadas;
     private boolean statusTarefa;
+    private Funcionario funcionario;
+    private Date horaInicio;
+    private Date horaFinal;
 
 
     public Tarefa(int idTarefa, int nivel, int horasNecessarias, boolean statusTarefa) {
         this.idTarefa = idTarefa;
         this.nivel = nivel;
         this.horasNecessarias = horasNecessarias;
-        //this.horasTrabalhadas = 0;
         this.statusTarefa = statusTarefa;
     }
 
@@ -40,14 +42,6 @@ public class Tarefa {
         this.horasNecessarias = horasNecessarias;
     }
 
-    public Time getHorasTrabalhadas() {
-        return this.horasTrabalhadas;
-    }
-
-    public void setHorasTrabalhadas(Time horasTrabalhadas) {
-        this.horasTrabalhadas = horasTrabalhadas;
-    }
-
     public boolean isStatusTarefa() {
         return this.statusTarefa;
     }
@@ -59,5 +53,23 @@ public class Tarefa {
     public void setStatusTarefa(boolean statusTarefa) {
         this.statusTarefa = statusTarefa;
     }
+
+
+    public Date getHoraInicio() {
+        return this.horaInicio;
+    }
+
+    public void setHoraInicio(Date horaInicio) {
+        this.horaInicio = horaInicio;
+    }
+
+    public Date getHoraFinal() {
+        return this.horaFinal;
+    }
+
+    public void setHoraFinal(Date horaFinal) {
+        this.horaFinal = horaFinal;
+    }
+
     
 }
