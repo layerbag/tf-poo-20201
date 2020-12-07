@@ -1,18 +1,44 @@
 import java.util.ArrayList;
 
-public class Gerente {
-    private ArrayList<Tarefa> tarefaDiaria = new ArrayList();
+public class Gerente extends Pessoa{
+    private int senhaGerente;
+    private String areaSupervisao;
+    private ArrayList<Tarefa> tarefas = new ArrayList();
+    private ArrayList<Funcionario> funcionarios = new ArrayList();
 
-    public void adicionTarefa(Tarefa t){
-        tarefaDiaria.add(t);
-        System.out.println(t.toString());
+
+    public Gerente(String cpf, String nome, int idade, double salario, int senhaGerente, String areaSupervisao) {
+        super(cpf, nome, idade, salario);
+        this.senhaGerente = senhaGerente;
+        this.areaSupervisao = areaSupervisao;
     }
 
-    public void removeTarefa(Tarefa t){
-        tarefaDiaria.remove(t);
+
+    public Gerente(int senhaGerente, String areaSupervisao) {
+        this.senhaGerente = senhaGerente;
+        this.areaSupervisao = areaSupervisao;
     }
 
-    public static void retornaTarefas(int nivel){
-        
+
+    public int getSenhaGerente() {
+        return this.senhaGerente;
     }
+
+    public void setSenhaGerente(int senhaGerente) {
+        this.senhaGerente = senhaGerente;
+    }
+
+    public String getAreaSupervisao() {
+        return this.areaSupervisao;
+    }
+
+    public void setAreaSupervisao(String areaSupervisao) {
+        this.areaSupervisao = areaSupervisao;
+    }
+
+    public void montaTarefa(){
+        Tarefa t = new Tarefa(1, 1, 50, false);
+        tarefas.add(t);
+    }
+
 }
