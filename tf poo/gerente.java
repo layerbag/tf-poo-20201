@@ -1,11 +1,13 @@
 import java.util.ArrayList;
 
-public class gerente {
-    ArrayList<tarefa> tarefaDiaria = new ArrayList();
+public class Gerente {
+    private ArrayList<Tarefa> tarefaDiaria = new ArrayList();
 
-    public static tarefa retorna_tarefa(funcionario f){
-        tarefa a;
+    public void adicionTarefa(Tarefa t){
+        tarefaDiaria.add(t);
+    }
 
-    
+    public void removeTarefa(Tarefa t){
+        tarefaDiaria.remove(t);
     }
 }
