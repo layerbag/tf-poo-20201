@@ -1,6 +1,5 @@
 public class Tarefa {
-    String nome;
-
+    private String nome;
 
     public Tarefa() {
     }
@@ -21,5 +20,4 @@ public class Tarefa {
     public String toString() {
         return "Nome: " + getNome();
     }
-
 }

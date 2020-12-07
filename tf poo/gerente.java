@@ -5,6 +5,7 @@ public class Gerente {
 
     public void adicionTarefa(Tarefa t){
         tarefaDiaria.add(t);
+        System.out.println(t.toString());
     }
 
     public void removeTarefa(Tarefa t){
