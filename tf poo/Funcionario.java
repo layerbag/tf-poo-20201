@@ -1,4 +1,7 @@
 import java.sql.Time;
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
 
 public class Funcionario extends Pessoa{
     private int nivel;
@@ -22,7 +25,8 @@ public class Funcionario extends Pessoa{
     }
 
 
-    public Funcionario(int nivel, int cargaHorariaDiaria, boolean naEmpresa) {
+    public Funcionario(String cpf, String nome, int idade, double salario, int nivel, int cargaHorariaDiaria, boolean naEmpresa) {
+        super(cpf, nome, idade, salario);
         this.nivel = nivel;
         this.cargaHorariaDiaria = cargaHorariaDiaria;
         this.naEmpresa = naEmpresa;
@@ -66,8 +70,16 @@ public class Funcionario extends Pessoa{
         return this.tarefa;
     }
 
-    public void setTarefa(Tarefa tarefa) {
-        this.tarefa = tarefa;
+    public void setTarefa() {
+        for (Tarefa element : super.getTarefas()) {
+            if(element.getNivel() == this.nivel){
+                int x = JOptionPane.showConfirmDialog(null,"deseja adicionar essa tarefa?","seleção de tarefa", JOptionPane.YES_NO_OPTION);
+                if(x == 0) {
+                    this.tarefa = element;
+                    break;
+                }
+            }
+        }
     }
 
     public Time getHoraEntrada() {

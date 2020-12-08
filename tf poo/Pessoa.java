@@ -1,9 +1,11 @@
+import java.util.ArrayList;
+
 public abstract class Pessoa {
     private String cpf;
     private String nome;
     private int idade;
     private double salario;
-
+    private ArrayList<Tarefa> tarefas = new ArrayList();
 
     public Pessoa(String cpf, String nome, int idade, double salario) {
         this.cpf = cpf;
@@ -47,6 +49,10 @@ public abstract class Pessoa {
 
     public void setSalario(double salario) {
         this.salario = salario;
+    }
+
+    public ArrayList<Tarefa> getTarefas(){
+        return this.tarefas;
     }
 
 
