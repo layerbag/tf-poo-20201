@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,7 +13,9 @@ public class Main {
         Data PD = new Data(PData);
         Data FD = new Data(FData);
         Data TD = new Data(TData);
+        ArrayList<Gerente> gerentes = new ArrayList<>();
 
+        gerentes = PD.legerente();
 
 
 
