@@ -4,15 +4,16 @@ import java.util.Scanner;
 public class Data {
 
     private File file;
+    private Scanner scan;
 
     public Data(File file){
         this.file = file;
     }
 
-    public String GetDate(){
+    public void OpenFile(){
         //ler arquivo
         try {
-            Scanner scan = new Scanner(this.file);
+            this.scan = new Scanner(this.file);
 
             //System.out.println(("SAVE.txt criated? " + file.createNewFile()));
         //rxceção
@@ -21,14 +22,20 @@ public class Data {
         }
     }
 
-    public ArrayList<gerente> legerente(){
-        Gerente g;
-        ArrayList<Gerente> gerentes = new Arraylist<>();
+    public ArrayList<Gerente> GetDataGerente(){
+        
+        ArrayList<Gerente> Array_G = new Arraylist<>();
+        OpenFile();
     
-        //le o arquivos, e separar os dados;
-        gerentes.add(new Gerente(cpf, nome, idade, salario, senhaGerente, areaSupervisao));
+        while(scan.hasNext()){
+        Array_G.add(new Gerente(scan.next(), scan.next(), Integer.parseInt(scan.next()), Double.parseDouble(scan.next()), scan.next(), scan.next());
+        }
 
-        return gerentes;
+        return Array_G;
     }
+    public ArrayList<Funcionario> GetDataFuncionario(){
+    }
+    public ArrayList<Tarefa> GetDataTarefas(){
 
+    }
 }

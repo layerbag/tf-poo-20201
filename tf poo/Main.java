@@ -6,21 +6,21 @@ public class Main {
     public static void main(String[] args) {
         // ARQUIVOS
         //declarar arquivos
-        File PData = new File("PessoaData.txt");
+        File GData = new File("GerenteData.txt");
         File FData = new File("FuncionarioData.txt");
         File TData = new File("TarefaData.txt");
         // contrutor dado
-        Data PD = new Data(PData);
+        Data GD = new Data(GData);
         Data FD = new Data(FData);
         Data TD = new Data(TData);
-        ArrayList<Gerente> gerentes = new ArrayList<>();
+        //Array
+        ArrayList<Gerente> ArreyGerentes = new ArrayList<>();
+        ArrayList<Funcionario> ArreyFuncionario = new ArrayList<>();
+        ArrayList<Tarefa> ArreyTarefas = new ArrayList<>();
 
-<<<<<<< Updated upstream
-        gerentes = PD.legerente();
-=======
-        PD.GetDate()
->>>>>>> Stashed changes
-
+        ArreyGerentes = GD.GetDataGerente();
+        ArreyGerentes = FD.GetDataFuncionario();
+        ArreyGerentes = TD.GetDataTarefas();
 
 
         //TEST
