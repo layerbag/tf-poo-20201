@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Data {
 
     private File file;
@@ -7,10 +9,12 @@ public class Data {
     }
 
     public String GetDate(){
-        //cria arquivo
+        //ler arquivo
         try {
-            System.out.println(("SAVE.txt criated? " + file.createNewFile()));
-        //se ja exite
+            Scanner scan = new Scanner(this.file);
+
+            //System.out.println(("SAVE.txt criated? " + file.createNewFile()));
+        //rxceção
         }catch (IOException e) {
             e.printStackTrace(); 
         }
