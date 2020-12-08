@@ -29,11 +29,14 @@ public class Data {
         }catch (ErroNoFile e){
             e.CorrigeErro();
         }
-    
-        while(scan.hasNext()){
-            Array_G.add(new Gerente(scan.next(), scan.next(), Integer.parseInt(scan.next()), Double.parseDouble(scan.next()), scan.next(), scan.next()));
-        }
 
+        try{
+            while(scan.hasNext()){
+                Array_G.add(new Gerente(scan.next(), scan.next(), Integer.parseInt(scan.next()), Double.parseDouble(scan.next()), scan.next(), scan.next()));
+            }
+        }catch(Exception e){ 
+            e.getMessage();
+        }
         return Array_G;
     }
     public ArrayList<Funcionario> GetDataFuncionario() throws ErroNoFile{
@@ -43,9 +46,12 @@ public class Data {
         } catch (ErroNoFile e) {
             e.CorrigeErro();
         }
-    
-        while(scan.hasNext()){
-            Array_F.add(new Funcionario(scan.next(), scan.next(), Integer.parseInt(scan.next()), Double.parseDouble(scan.next()), Integer.parseInt(scan.next()),Integer.parseInt(scan.next())));
+        try{
+            while(scan.hasNext()){
+                Array_F.add(new Funcionario(scan.next(), scan.next(), Integer.parseInt(scan.next()), Double.parseDouble(scan.next()), Integer.parseInt(scan.next()),Integer.parseInt(scan.next())));
+            }
+        }catch(Exception e){ 
+            e.getMessage();
         }
 
         return Array_F;
@@ -57,9 +63,13 @@ public class Data {
         }catch (ErroNoFile e){
             e.CorrigeErro();
         }
-    
-        while(scan.hasNext()){
-        Array_F.add(new Tarefa(Integer.parseInt(scan.next()), Integer.parseInt(scan.next()), Integer.parseInt(scan.next()), Boolean.parseBoolean(scan.next()) ) );
+        
+        try{
+            while(scan.hasNext()){
+                Array_F.add(new Tarefa(Integer.parseInt(scan.next()), Integer.parseInt(scan.next()), Integer.parseInt(scan.next()), Boolean.parseBoolean(scan.next()) ) );
+            }
+        }catch(Exception e){ 
+            e.getMessage();
         }
 
         return Array_F;

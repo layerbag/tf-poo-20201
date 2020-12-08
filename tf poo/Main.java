@@ -1,5 +1,4 @@
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main {
@@ -20,20 +19,21 @@ public class Main {
 
         ArrayGerentes = GD.GetDataGerente();
         ArrayFuncionario = FD.GetDataFuncionario();
-      //  ArrayTarefas = TD.GetDataTarefas();
+        ArrayTarefas = TD.GetDataTarefas();
 
 
         //TEST
-        /*menssagem = "2222 chefe  55 5000.00 123 Gerente de Projetos"
         
-        //Gerente g = new Gerente("2222", "chefe", 55, 5000.00, 123, "Gerente de Projetos");
-        //Funcionario f = new Funcionario("5555", "JV", 20, 2500.00, 2);
-        //Tarefa t = new Tarefa(555, 1, 20, false);
-
-        f.batePonto();
-        System.out.println(f.getHoraEntrada());
-        f.finalizaExpediente();*/
+        /*
+        Gerente g = new Gerente("2222", "chefe", 55, 5000.00, 123, "Gerente de Projetos");
+        Funcionario f = new Funcionario("5555", "JV", 20, 2500.00, 2);
+        Tarefa t = new Tarefa(555, 1, 20, false);
+        */
         
+        ArrayFuncionario.get(0).batePonto();
+        System.out.println(ArrayFuncionario.get(0).getHoraEntrada());
+        ArrayFuncionario.get(0).finalizaExpediente();
+        System.out.println(ArrayGerentes.get(0).getSenhaGerente());
 
     }
 }

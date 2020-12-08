@@ -1,4 +1,6 @@
 import java.io.File;
+import java.io.IOException;
+
 
 public class ErroNoFile extends Exception {
     File file;
@@ -9,6 +11,13 @@ public class ErroNoFile extends Exception {
 
     public void CorrigeErro(){
         System.out.println("criando arquivo...");
+        try {file.createNewFile();
+            
+        } catch (IOException e) {
+            e.getMessage();
+        }
+        
+        
     }
 
     
