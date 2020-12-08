@@ -8,7 +8,7 @@ public class Funcionario extends Pessoa{
     private boolean naEmpresa;
 
     //Construtor
-    public Funcionario(String cpf, String nome, int idade, double salario, int nivel) {
+    public Funcionario(String cpf, String nome, int idade, double salario, int nivel, int horasExtras) {
         super(cpf, nome, idade, salario);
         this.nivel = nivel;
         this.horasExtras = 0;
