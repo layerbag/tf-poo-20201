@@ -14,13 +14,13 @@ public class Main {
         Data FD = new Data(FData);
         Data TD = new Data(TData);
         //Array
-        ArrayList<Gerente> ArreyGerentes = new ArrayList<>();
-        ArrayList<Funcionario> ArreyFuncionario = new ArrayList<>();
-        ArrayList<Tarefa> ArreyTarefas = new ArrayList<>();
+        ArrayList<Gerente> ArrayGerentes = new ArrayList<>();
+        ArrayList<Funcionario> ArrayFuncionario = new ArrayList<>();
+        ArrayList<Tarefa> ArrayTarefas = new ArrayList<>();
 
-        ArreyGerentes = GD.GetDataGerente();
-        ArreyGerentes = FD.GetDataFuncionario();
-        ArreyGerentes = TD.GetDataTarefas();
+        ArrayGerentes = GD.GetDataGerente();
+        ArrayGerentes = FD.GetDataFuncionario();
+        ArrayGerentes = TD.GetDataTarefas();
 
 
         //TEST
