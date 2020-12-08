@@ -15,10 +15,9 @@ public class Data {
         try {
             this.scan = new Scanner(this.file);
 
-            //System.out.println(("SAVE.txt criated? " + file.createNewFile()));
-        //rxceção
         }catch (IOException e) {
-            e.printStackTrace(); 
+            // 
+            
         }
     }
 
@@ -34,6 +33,14 @@ public class Data {
         return Array_G;
     }
     public ArrayList<Funcionario> GetDataFuncionario(){
+        ArrayList<Funcionario> Array_F = new Arraylist<>();
+        OpenFile();
+    
+        while(scan.hasNext()){
+        Array_F.add(new Funcionario(cpf, nome, idade, salario, nivel);
+        }
+
+        return Array_F;
     }
     public ArrayList<Tarefa> GetDataTarefas(){
 
