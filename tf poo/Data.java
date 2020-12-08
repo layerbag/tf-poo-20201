@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.File;
+import java.io.IOException;
 
 public class Data {
 
@@ -23,17 +25,18 @@ public class Data {
 
     public ArrayList<Gerente> GetDataGerente(){
         
-        ArrayList<Gerente> Array_G = new Arraylist<>();
+        ArrayList<Gerente> Array_G = new ArrayList<>();
         OpenFile();
     
         while(scan.hasNext()){
-        Array_G.add(new Gerente(scan.next(), scan.next(), Integer.parseInt(scan.next()), Double.parseDouble(scan.next()), scan.next(), scan.next()));
+            Array_G.add(new Gerente(scan.next(), scan.next(), Integer.parseInt(scan.next()),
+            Double.parseDouble(scan.next()), scan.next(), scan.next()));
         }
 
         return Array_G;
     }
     public ArrayList<Funcionario> GetDataFuncionario(){
-        ArrayList<Funcionario> Array_F = new Arraylist<>();
+        ArrayList<Funcionario> Array_F = new ArrayList<>();
         OpenFile();
     
         while(scan.hasNext()){
@@ -43,14 +46,14 @@ public class Data {
         return Array_F;
     }
     public ArrayList<Tarefa> GetDataTarefas(){
-        ArrayList<Tarefa> Array_T = new Arraylist<>();
+        ArrayList<Tarefa> Array_F = new ArrayList<>();
         OpenFile();
     
         while(scan.hasNext()){
         Array_F.add(new Tarefa(Integer.parseInt(scan.next()), Integer.parseInt(scan.next()), Integer.parseInt(scan.next()), Boolean.parseBoolean(scan.next()) ) );
         }
 
-        return Array_T;
+        return Array_F;
     }
 
     
