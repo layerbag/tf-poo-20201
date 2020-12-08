@@ -15,7 +15,11 @@ public class Main {
         Data TD = new Data(TData);
         ArrayList<Gerente> gerentes = new ArrayList<>();
 
+<<<<<<< Updated upstream
         gerentes = PD.legerente();
+=======
+        PD.GetDate()
+>>>>>>> Stashed changes
 
 
 
