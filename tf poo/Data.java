@@ -2,9 +2,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.io.File;
-import java.io.IOException;
-
 public class Data {
 
     private File file;
@@ -48,14 +45,18 @@ public class Data {
         }
     
         while(scan.hasNext()){
-       // Array_F.add(new Funcionario(cpf, nome, idade, salario, nivel);
+            Array_F.add(new Funcionario(scan.next(), scan.next(), Integer.parseInt(scan.next()), Double.parseDouble(scan.next()), Integer.parseInt(scan.next()),Integer.parseInt(scan.next())));
         }
 
         return Array_F;
     }
     public ArrayList<Tarefa> GetDataTarefas(){
         ArrayList<Tarefa> Array_F = new ArrayList<>();
-        OpenFile();
+        try{
+            OpenFile();
+        }catch (ErroNoFile e){
+            e.CorrigeErro();
+        }
     
         while(scan.hasNext()){
         Array_F.add(new Tarefa(Integer.parseInt(scan.next()), Integer.parseInt(scan.next()), Integer.parseInt(scan.next()), Boolean.parseBoolean(scan.next()) ) );
