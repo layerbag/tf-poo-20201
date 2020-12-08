@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ErroNoFile {
         // ARQUIVOS
         //declarar arquivos
         File GData = new File("GerenteData.txt");
@@ -19,12 +19,12 @@ public class Main {
         ArrayList<Tarefa> ArrayTarefas = new ArrayList<>();
 
         ArrayGerentes = GD.GetDataGerente();
-        ArrayGerentes = FD.GetDataFuncionario();
-        ArrayGerentes = TD.GetDataTarefas();
+        ArrayFuncionario = FD.GetDataFuncionario();
+      //  ArrayTarefas = TD.GetDataTarefas();
 
 
         //TEST
-        menssagem = "2222 chefe  55 5000.00 123 Gerente de Projetos"
+        /*menssagem = "2222 chefe  55 5000.00 123 Gerente de Projetos"
         
         Gerente g = new Gerente("2222", "chefe", 55, 5000.00, 123, "Gerente de Projetos");
         Funcionario f = new Funcionario("5555", "JV", 20, 2500.00, 2);
@@ -32,7 +32,7 @@ public class Main {
 
         f.batePonto();
         System.out.println(f.getHoraEntrada());
-        f.finalizaExpediente();
+        f.finalizaExpediente();*/
         
 
     }
