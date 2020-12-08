@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 
 public class Gerente extends Pessoa{
-    private int senhaGerente;
+    private String senhaGerente;
     private String areaSupervisao;
     private ArrayList<Funcionario> funcionarios = new ArrayList();
 
 
-    public Gerente(String cpf, String nome, int idade, double salario, int senhaGerente, String areaSupervisao) {
+    public Gerente(String cpf, String nome, int idade, double salario, String senhaGerente, String areaSupervisao) {
         super(cpf, nome, idade, salario);
         this.senhaGerente = senhaGerente;
         this.areaSupervisao = areaSupervisao;
@@ -22,11 +22,11 @@ public class Gerente extends Pessoa{
     }
 
 
-    public int getSenhaGerente() {
+    public String getSenhaGerente() {
         return this.senhaGerente;
     }
 
-    public void setSenhaGerente(int senhaGerente) {
+    public void setSenhaGerente(String senhaGerente) {
         this.senhaGerente = senhaGerente;
     }
 
