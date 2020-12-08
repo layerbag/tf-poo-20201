@@ -1,44 +1,44 @@
 import java.util.Calendar;
-import java.util.Date;
 
 public class Funcionario extends Pessoa{
     private int nivel;
     private int horasExtras;
     private Tarefa tarefa;
-    private Date horaEntrada;
+    private Calendar horaEntrada;
     private boolean naEmpresa;
 
-
-    public Funcionario(String cpf, String nome, int idade, double salario, int nivel, int horasExtras, Tarefa tarefa, boolean naEmpresa) {
+    //Construtor
+    public Funcionario(String cpf, String nome, int idade, double salario, int nivel) {
         super(cpf, nome, idade, salario);
         this.nivel = nivel;
-        this.horasExtras = horasExtras;
-        this.tarefa = tarefa;
-        this.naEmpresa = naEmpresa;
+        this.horasExtras = 0;
+        this.naEmpresa = false;
     }
 
 
-    public Funcionario(int nivel, boolean naEmpresa) {
-        this.nivel = nivel;
-        this.naEmpresa = naEmpresa;
-    }
-
-
+    //Métodos essenciais
     public double calculaSalario(double valorHoraExtra){
         return super.getSalario() + valorHoraExtra*this.horasExtras;
     }
 
     public void batePonto(){
-        this.horaEntrada = new Date();
+        this.horaEntrada = Calendar.getInstance(); //instancia calendar da hora de entrada
     }
 
     public void finalizaExpediente(){
-        Date horaAtual = new Date();
-        
+        Calendar c = Calendar.getInstance(); //instancia calendar da hora de saida
+        c.add(Calendar.HOUR_OF_DAY, 9); //adiciona 9 horas para teste
+        int horas = c.get(Calendar.HOUR_OF_DAY) - this.horaEntrada.get(Calendar.HOUR_OF_DAY); //calcula horas trabalhadas
+        if(horas > 8)this.horasExtras += horas; //se a carga horária passar de 8 adicionamos em horas extras
+        System.out.println("horas trabalhadas: " + horas + "horas extra: " + (horas-8));
     }
 
-
+    public void recebeTarefa(){
+        //continuar
+    }
     
+
+    //Gets e Sets
     public int getNivel() {
         return this.nivel;
     }
@@ -63,12 +63,10 @@ public class Funcionario extends Pessoa{
         this.tarefa = tarefa;
     }
 
-    public Date getHoraEntrada() {
-        return this.horaEntrada;
-    }
-
-    public void setHoraEntrada(Date horaEntrada) {
-        this.horaEntrada = horaEntrada;
+    public String getHoraEntrada() {
+        return this.horaEntrada.get(Calendar.HOUR_OF_DAY) + 
+        ":" + this.horaEntrada.get(Calendar.MINUTE) + 
+        ":" + this.horaEntrada.get(Calendar.SECOND);
     }
 
     public boolean isNaEmpresa() {

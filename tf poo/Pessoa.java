@@ -13,10 +13,6 @@ public abstract class Pessoa {
     }
 
 
-    public Pessoa() {
-    }
-
-
     public String getCpf() {
         return this.cpf;
     }

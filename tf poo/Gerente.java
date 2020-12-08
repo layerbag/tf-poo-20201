@@ -3,7 +3,6 @@ import java.util.ArrayList;
 public class Gerente extends Pessoa{
     private int senhaGerente;
     private String areaSupervisao;
-    private ArrayList<Tarefa> tarefas = new ArrayList();
     private ArrayList<Funcionario> funcionarios = new ArrayList();
 
 
@@ -14,9 +13,12 @@ public class Gerente extends Pessoa{
     }
 
 
-    public Gerente(int senhaGerente, String areaSupervisao) {
-        this.senhaGerente = senhaGerente;
-        this.areaSupervisao = areaSupervisao;
+    public void cadastraFuncionario(Funcionario funcionario){
+        this.funcionarios.add(funcionario);
+    }
+
+    public void removeFuncionarios(Funcionario funcionario){
+        this.funcionarios.remove(funcionario);
     }
 
 
@@ -36,9 +38,6 @@ public class Gerente extends Pessoa{
         this.areaSupervisao = areaSupervisao;
     }
 
-    public void montaTarefa(){
-        Tarefa t = new Tarefa(1, 1, 50, false);
-        tarefas.add(t);
-    }
+    
 
 }
