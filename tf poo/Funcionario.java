@@ -11,7 +11,7 @@ public class Funcionario extends Pessoa{
     public Funcionario(String cpf, String nome, int idade, double salario, int nivel, int horasExtras) {
         super(cpf, nome, idade, salario);
         this.nivel = nivel;
-        this.horasExtras = 0;
+        this.horasExtras = horasExtras;
         this.naEmpresa = false;
     }
 
