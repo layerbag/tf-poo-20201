@@ -1,4 +1,4 @@
-import java.io.File;
+import java.io.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -20,7 +20,6 @@ public class Data {
             throw new ErroNoFile(file);
         }
     }
-
     public ArrayList<Gerente> GetDataGerente() throws ErroNoFile{
         
         ArrayList<Gerente> Array_G = new ArrayList<>();
@@ -32,11 +31,12 @@ public class Data {
 
         try{
             while(scan.hasNext()){
-                Array_G.add(new Gerente(scan.next(), scan.next(), Integer.parseInt(scan.next()), Double.parseDouble(scan.next()), scan.next(), scan.next()));
+                Array_G.add(new Gerente(scan.nextLine(), scan.nextLine(), scan.nextInt(), scan.nextDouble(), scan.nextLine(), scan.nextLine()) );
             }
         }catch(Exception e){ 
             e.getMessage();
         }
+        scan.close();
         return Array_G;
     }
     public ArrayList<Funcionario> GetDataFuncionario() throws ErroNoFile{
@@ -48,15 +48,15 @@ public class Data {
         }
         try{
             while(scan.hasNext()){
-                Array_F.add(new Funcionario(scan.next(), scan.next(), Integer.parseInt(scan.next()), Double.parseDouble(scan.next()), Integer.parseInt(scan.next()),Integer.parseInt(scan.next())));
+                Array_F.add(new Funcionario(scan.nextLine(), scan.nextLine(), scan.nextInt(), scan.nextDouble(), scan.nextInt(), scan.nextInt()));
             }
         }catch(Exception e){ 
             e.getMessage();
         }
-
+        scan.close();
         return Array_F;
     }
-    public ArrayList<Tarefa> GetDataTarefas(){
+    public ArrayList<Tarefa> GetDataTarefas()throws ErroNoFile{
         ArrayList<Tarefa> Array_F = new ArrayList<>();
         try{
             OpenFile();
@@ -66,14 +66,38 @@ public class Data {
         
         try{
             while(scan.hasNext()){
-                Array_F.add(new Tarefa(Integer.parseInt(scan.next()), Integer.parseInt(scan.next()), Integer.parseInt(scan.next()), Boolean.parseBoolean(scan.next()) ) );
+                Array_F.add(new Tarefa(scan.nextInt(), scan.nextInt(), scan.nextInt(), scan.nextBoolean()));
             }
         }catch(Exception e){ 
             e.getMessage();
         }
-
+        scan.close();
         return Array_F;
     }
-
     
+    public void SetDataGerente(ArrayList<Gerente>Array_G){ 
+        try{
+            PrintWriter Wfile = new PrintWriter(this.file);
+                for (Gerente gerente : Array_G) {
+                    
+                    Wfile.print(Array_G.gerente.getCpf() + " " );
+                }
+                    
+                
+            Wfile.close();
+        }catch(Exception e){
+            e.getMessage();
+        }
+    }
+
+    public void SetDataFuncionario(ArrayList<Funcionario>Array_F){ 
+        
+
+    }
+
+    public void SetDataTarefa(ArrayList<Tarefa>Array_T){ 
+        
+
+    }
+
 }

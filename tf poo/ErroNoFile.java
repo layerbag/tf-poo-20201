@@ -10,8 +10,9 @@ public class ErroNoFile extends Exception {
     }
 
     public void CorrigeErro(){
-        System.out.println("criando arquivo...");
-        try {file.createNewFile();
+        try {
+            System.out.println("criando arquivo...");
+            file.createNewFile();
             
         } catch (IOException e) {
             e.getMessage();
