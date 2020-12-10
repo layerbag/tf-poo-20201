@@ -162,7 +162,9 @@ public class Data {
         return Array_T;
     }
     
-    public void SetDataGerente(ArrayList<Gerente>Array_G){ //grava arquivo do gerente
+    public void SetDataGerente(ArrayList<Gerente>Array_G) throws ErroNoFile{ //grava arquivo do gerente
+        this.file.delete();
+        OpenFile();
         try{
             PrintWriter Wfile = new PrintWriter(this.file);
                 for (Gerente gerente : Array_G) {   
@@ -176,7 +178,9 @@ public class Data {
         }
     }
 
-    public void SetDataFuncionario(ArrayList<Funcionario>Array_F){ //grava arquivo do funcionario
+    public void SetDataFuncionario(ArrayList<Funcionario>Array_F) throws ErroNoFile{ //grava arquivo do funcionario
+        this.file.delete();
+        OpenFile();
         try{
             PrintWriter Wfile = new PrintWriter(this.file);
                 for (Funcionario funcionario : Array_F) {
@@ -191,7 +195,9 @@ public class Data {
         }
     }
 
-    public void SetDataTarefa(ArrayList<Tarefa>Array_T){ // grava arquivo das tarefas
+    public void SetDataTarefa(ArrayList<Tarefa>Array_T) throws ErroNoFile{ // grava arquivo das tarefas
+        this.file.delete();
+        OpenFile();
         try{
             PrintWriter Wfile = new PrintWriter(this.file);
                 for (Tarefa tarefas : Array_T) {
