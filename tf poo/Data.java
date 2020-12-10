@@ -66,8 +66,7 @@ public class Data {
         int nivel;
         int horasExtras;
         Tarefa tarefa;
-        String tarefaID;
-        String longc;
+        String temp;
         Calendar horaEntrada;
         boolean naEmpresa;
 
@@ -87,20 +86,20 @@ public class Data {
                nivel = scan.nextInt();
                horasExtras = scan.nextInt();
                scan.nextLine();
-               tarefaID = scan.nextLine();
-                if(tarefaID.equals("x") == false){
+               temp = scan.nextLine();
+                if(temp.equals("x") == false){
                     for (Tarefa tarefa_2 : tarefas) {
-                        if(tarefa_2.getIdTarefa() == Integer.parseInt(tarefaID)){ 
+                        if(tarefa_2.getIdTarefa() == Integer.parseInt(temp)){ 
                             tarefa = tarefa_2;
                             break;
                         }
                     }
                 }
-                longc = scan.next();
-                if(longc.equals("x") == true) { 
+                temp = scan.next();
+                if(temp.equals("x") == true) { 
                     horaEntrada = null;}
                 else{
-                    long c =Long.parseLong(longc);
+                    long c =Long.parseLong(temp);
                     horaEntrada.setTimeInMillis(c);
                 }
                 naEmpresa = scan.nextBoolean();
@@ -115,7 +114,14 @@ public class Data {
         return Array_F;
     }
     public ArrayList<Tarefa> GetDataTarefas()throws ErroNoFile{
-        ArrayList<Tarefa> Array_F = new ArrayList<>();
+        ArrayList<Tarefa> Array_T = new ArrayList<>();
+        int idTarefa;
+        int nivel;
+        int horasNecessarias;
+        boolean statusTarefa;
+        Calendar dataInicio;
+        Calendar dataFinal;
+        String temp;
 
         try{
             OpenFile();
@@ -125,14 +131,32 @@ public class Data {
         
         try{
             while(scan.hasNext()){
-                Array_F.add(new Tarefa(scan.nextInt(), scan.nextInt(), scan.nextInt(), scan.nextBoolean()));
+                dataInicio = Calendar.getInstance();
+                dataFinal = Calendar.getInstance();
+
+                idTarefa = scan.nextInt();
+                nivel = scan.nextInt();
+                horasNecessarias = scan.nextInt();
+                statusTarefa = scan.nextBoolean();
+                scan.nextLine();
+                temp = scan.nextLine();
+
+                if(temp.equals("x") == true) dataInicio = null;
+                else{dataInicio.setTimeInMillis(Long.parseLong(temp));}
+
+                temp = scan.nextLine();
+
+                if(temp.equals("x") == true) dataFinal = null;
+                else{dataFinal.setTimeInMillis(Long.parseLong(temp));}
+
+                Array_T.add(new Tarefa(idTarefa, nivel, horasNecessarias, statusTarefa, dataInicio, dataFinal));
             }
             scan.close();
         }catch(Exception e){ 
             e.getMessage();
         }
         
-        return Array_F;
+        return Array_T;
     }
     
     public void SetDataGerente(ArrayList<Gerente>Array_G){ //grava arquivo do gerente

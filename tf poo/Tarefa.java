@@ -17,6 +17,15 @@ public class Tarefa {
         this.statusTarefa = statusTarefa;
     }
 
+    public Tarefa(int idTarefa, int nivel, int horasNecessarias, boolean statusTarefa, Calendar dataInicio, Calendar dataFinal) {
+        this.idTarefa = idTarefa;
+        this.nivel = nivel;
+        this.horasNecessarias = horasNecessarias;
+        this.statusTarefa = statusTarefa;
+        this.dataInicio = dataInicio;
+        this.dataFinal = dataFinal;
+    }
+
     public void arquivaTarefa(){
         //salva em arquivo
     }
@@ -73,8 +82,16 @@ public class Tarefa {
     }
 
     public String toString(){
-        return this.idTarefa + "\n" + this.nivel + "\n" + this.horasNecessarias +
-            "\n" + this.statusTarefa;
+        String x= this.idTarefa + "\n" + this.nivel + "\n" + this.horasNecessarias +
+            "\n" + this.statusTarefa + "\n";
+
+        if(dataInicio == null) x += "x\n";
+        else x += dataInicio.getTimeInMillis();
+
+        if(dataFinal == null) x += "x";
+        else x += dataFinal.getTimeInMillis();
+
+        return x;
     }
     
 }
