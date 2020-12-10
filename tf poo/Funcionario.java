@@ -16,6 +16,16 @@ public class Funcionario extends Pessoa{
     }
 
 
+    public Funcionario(String cpf, String nome, int idade, double salario,int nivel, int horasExtras, Tarefa tarefa, Calendar horaEntrada, boolean naEmpresa) {
+        super(cpf, nome, idade, salario);
+        this.nivel = nivel;
+        this.horasExtras = horasExtras;
+        this.tarefa = tarefa;
+        this.horaEntrada = horaEntrada;
+        this.naEmpresa = naEmpresa;
+    }
+    
+
     //Métodos essenciais
     public double calculaSalario(double valorHoraExtra){
         return super.getSalario() + valorHoraExtra*this.horasExtras;
@@ -81,12 +91,24 @@ public class Funcionario extends Pessoa{
         this.naEmpresa = naEmpresa;
     }
 
-    public String toString (){ //transforma os dados em String no formatado para o arquivo
+    public String toString () { //transforma os dados em String no formatado para o arquivo
         String x ="";
 
         x += this.getCpf()+ "\n" + this.getNome() + "\n" +  this.getIdade() + "\n" +
-            this.getSalario() + "\n" + this.nivel + "\n" + this.horasExtras;
+            this.getSalario() + "\n" + this.nivel + "\n" + this.horasExtras + "\n";
+        if(this.tarefa == null){
+            x += "x\n";
+        }else{
+            x += this.tarefa.getIdTarefa() + "\n";
+        }
+        
+        if(this.horaEntrada == null){
+            x += "x\n";
+        }else{
+            x += this.horaEntrada.getTimeInMillis() + "\n";
+        }
 
+        x += this.naEmpresa;
         return x;
     }
 }

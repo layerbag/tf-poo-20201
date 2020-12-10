@@ -1,6 +1,7 @@
 import java.io.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Scanner;
 public class Data {
 
@@ -23,6 +24,14 @@ public class Data {
     public ArrayList<Gerente> GetDataGerente() throws ErroNoFile{
         
         ArrayList<Gerente> Array_G = new ArrayList<>();
+
+        String cpf;
+        String nome;
+        int idade;
+        double salario;
+        String senhaGerente;
+        String areaSupervisao;
+
         try{
             OpenFile();
         }catch (ErroNoFile e){
@@ -31,7 +40,15 @@ public class Data {
 
         try{
             while(scan.hasNext()){
-                Array_G.add(new Gerente(scan.nextLine(), scan.nextLine(), scan.nextInt(), scan.nextDouble(), scan.nextLine(), scan.nextLine()) );
+               cpf = scan.nextLine();
+               nome = scan.nextLine();
+               idade = scan.nextInt();
+               salario = scan.nextDouble();
+               scan.nextLine();
+               senhaGerente = scan.nextLine();
+               areaSupervisao = scan.nextLine();
+
+               Array_G.add(new Gerente(cpf, nome, idade, salario, senhaGerente, areaSupervisao));
             }
             scan.close();
         }catch(Exception e){ 
@@ -40,16 +57,55 @@ public class Data {
         
         return Array_G;
     }
-    public ArrayList<Funcionario> GetDataFuncionario() throws ErroNoFile{
+    public ArrayList<Funcionario> GetDataFuncionario(ArrayList<Tarefa> tarefas) throws ErroNoFile{
         ArrayList<Funcionario> Array_F = new ArrayList<>();
+        String cpf;
+        String nome;
+        int idade;
+        double salario;
+        int nivel;
+        int horasExtras;
+        Tarefa tarefa;
+        String tarefaID;
+        String longc;
+        Calendar horaEntrada;
+        boolean naEmpresa;
+
         try {
             OpenFile();
         } catch (ErroNoFile e) {
             e.CorrigeErro();
         }
         try{
-            while(scan.hasNext()){
-                Array_F.add(new Funcionario(scan.nextLine(), scan.nextLine(), scan.nextInt(), scan.nextDouble(), scan.nextInt(), scan.nextInt()));
+            while(scan.hasNext() == true){  // le dados dos funcionarios
+               tarefa = null;
+               horaEntrada = Calendar.getInstance();
+               cpf = scan.nextLine();
+               nome = scan.nextLine();
+               idade = scan.nextInt();
+               salario = scan.nextDouble();
+               nivel = scan.nextInt();
+               horasExtras = scan.nextInt();
+               scan.nextLine();
+               tarefaID = scan.nextLine();
+                if(tarefaID.equals("x") == false){
+                    for (Tarefa tarefa_2 : tarefas) {
+                        if(tarefa_2.getIdTarefa() == Integer.parseInt(tarefaID)){ 
+                            tarefa = tarefa_2;
+                            break;
+                        }
+                    }
+                }
+                longc = scan.next();
+                if(longc.equals("x") == true) { 
+                    horaEntrada = null;}
+                else{
+                    long c =Long.parseLong(longc);
+                    horaEntrada.setTimeInMillis(c);
+                }
+                naEmpresa = scan.nextBoolean();
+                scan.nextLine();
+                Array_F.add(new Funcionario(cpf, nome, idade, salario, nivel, horasExtras, tarefa, horaEntrada, naEmpresa));
             }
             scan.close();
         }catch(Exception e){ 
@@ -60,6 +116,7 @@ public class Data {
     }
     public ArrayList<Tarefa> GetDataTarefas()throws ErroNoFile{
         ArrayList<Tarefa> Array_F = new ArrayList<>();
+
         try{
             OpenFile();
         }catch (ErroNoFile e){
@@ -81,8 +138,7 @@ public class Data {
     public void SetDataGerente(ArrayList<Gerente>Array_G){ //grava arquivo do gerente
         try{
             PrintWriter Wfile = new PrintWriter(this.file);
-                for (Gerente gerente : Array_G) {
-                    
+                for (Gerente gerente : Array_G) {   
                     Wfile.println(gerente.toString());
                 }
                     
