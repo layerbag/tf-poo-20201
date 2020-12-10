@@ -2,6 +2,7 @@ import java.io.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.Scanner;
 public class Data {
 
@@ -69,6 +70,7 @@ public class Data {
         String temp;
         Calendar horaEntrada;
         boolean naEmpresa;
+        String area;
 
         try {
             OpenFile();
@@ -103,8 +105,8 @@ public class Data {
                     horaEntrada.setTimeInMillis(c);
                 }
                 naEmpresa = scan.nextBoolean();
-                scan.nextLine();
-                Array_F.add(new Funcionario(cpf, nome, idade, salario, nivel, horasExtras, tarefa, horaEntrada, naEmpresa));
+                area = scan.nextLine();
+                Array_F.add(new Funcionario(cpf, nome, idade, salario, nivel, horasExtras, tarefa, horaEntrada, naEmpresa,area));
             }
             scan.close();
         }catch(Exception e){ 
@@ -113,6 +115,7 @@ public class Data {
         
         return Array_F;
     }
+
     public ArrayList<Tarefa> GetDataTarefas()throws ErroNoFile{
         ArrayList<Tarefa> Array_T = new ArrayList<>();
         int idTarefa;
@@ -203,4 +206,27 @@ public class Data {
         }
     }
 
+    // separa os funcionarios por area e adiciona-os ao array de funcionarios do gerente
+    public static void classificaFuncionario (ArrayList<Gerente> gerentes, ArrayList<Funcionario> funcionarios){ 
+        for (Gerente gerente : gerentes) {
+            for (Funcionario funcionario : funcionarios) {
+                if(funcionario.getArea().equals(gerente.getAreaSupervisao()) == true){
+                    gerente.cadastraFuncionario(funcionario);
+                }
+            }
+        }
+    }
+
+    //retorna um array de funcionarios contendo todos os funcionarios
+    public static ArrayList<Funcionario> juntaFuncionarios(ArrayList<Gerente> gerentes){   
+        ArrayList<Funcionario> funcionarios = new ArrayList<>();
+
+        for (Gerente gerente : gerentes) {
+            funcionarios.addAll(gerente.getArrayList());
+        }
+
+        return funcionarios;
+    }
+
+    
 }

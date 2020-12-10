@@ -6,23 +6,26 @@ public class Funcionario extends Pessoa{
     private Tarefa tarefa;
     private Calendar horaEntrada;
     private boolean naEmpresa;
+    private String area;
 
     //Construtor
-    public Funcionario(String cpf, String nome, int idade, double salario, int nivel, int horasExtras) {
+    public Funcionario(String cpf, String nome, int idade, double salario, int nivel, int horasExtras, String area) {
         super(cpf, nome, idade, salario);
         this.nivel = nivel;
         this.horasExtras = horasExtras;
         this.naEmpresa = false;
+        this.area = area;
     }
 
 
-    public Funcionario(String cpf, String nome, int idade, double salario,int nivel, int horasExtras, Tarefa tarefa, Calendar horaEntrada, boolean naEmpresa) {
+    public Funcionario(String cpf, String nome, int idade, double salario,int nivel, int horasExtras, Tarefa tarefa, Calendar horaEntrada, boolean naEmpresa, String area) {
         super(cpf, nome, idade, salario);
         this.nivel = nivel;
         this.horasExtras = horasExtras;
         this.tarefa = tarefa;
         this.horaEntrada = horaEntrada;
         this.naEmpresa = naEmpresa;
+        this.area = area;
     }
     
 
@@ -91,6 +94,10 @@ public class Funcionario extends Pessoa{
         this.naEmpresa = naEmpresa;
     }
 
+    public String getArea (){
+        return this.area;
+    }
+
     public String toString () { //transforma os dados em String no formatado para o arquivo
         String x ="";
 
@@ -108,7 +115,7 @@ public class Funcionario extends Pessoa{
             x += this.horaEntrada.getTimeInMillis() + "\n";
         }
 
-        x += this.naEmpresa;
+        x += this.naEmpresa + "\n" + this.area;
         return x;
     }
 }
