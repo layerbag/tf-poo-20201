@@ -33,10 +33,11 @@ public class Data {
             while(scan.hasNext()){
                 Array_G.add(new Gerente(scan.nextLine(), scan.nextLine(), scan.nextInt(), scan.nextDouble(), scan.nextLine(), scan.nextLine()) );
             }
+            scan.close();
         }catch(Exception e){ 
             e.getMessage();
         }
-        scan.close();
+        
         return Array_G;
     }
     public ArrayList<Funcionario> GetDataFuncionario() throws ErroNoFile{
@@ -50,10 +51,11 @@ public class Data {
             while(scan.hasNext()){
                 Array_F.add(new Funcionario(scan.nextLine(), scan.nextLine(), scan.nextInt(), scan.nextDouble(), scan.nextInt(), scan.nextInt()));
             }
+            scan.close();
         }catch(Exception e){ 
             e.getMessage();
         }
-        scan.close();
+        
         return Array_F;
     }
     public ArrayList<Tarefa> GetDataTarefas()throws ErroNoFile{
@@ -68,19 +70,20 @@ public class Data {
             while(scan.hasNext()){
                 Array_F.add(new Tarefa(scan.nextInt(), scan.nextInt(), scan.nextInt(), scan.nextBoolean()));
             }
+            scan.close();
         }catch(Exception e){ 
             e.getMessage();
         }
-        scan.close();
+        
         return Array_F;
     }
     
-    public void SetDataGerente(ArrayList<Gerente>Array_G){ 
+    public void SetDataGerente(ArrayList<Gerente>Array_G){ //grava arquivo do gerente
         try{
             PrintWriter Wfile = new PrintWriter(this.file);
                 for (Gerente gerente : Array_G) {
                     
-                    Wfile.print(Array_G.gerente.getCpf() + " " );
+                    Wfile.println(gerente.toString());
                 }
                     
                 
@@ -90,14 +93,34 @@ public class Data {
         }
     }
 
-    public void SetDataFuncionario(ArrayList<Funcionario>Array_F){ 
-        
-
+    public void SetDataFuncionario(ArrayList<Funcionario>Array_F){ //grava arquivo do funcionario
+        try{
+            PrintWriter Wfile = new PrintWriter(this.file);
+                for (Funcionario funcionario : Array_F) {
+                    
+                    Wfile.println(funcionario.toString());
+                }
+                    
+                
+            Wfile.close();
+        }catch(Exception e){
+            e.getMessage();
+        }
     }
 
-    public void SetDataTarefa(ArrayList<Tarefa>Array_T){ 
-        
-
+    public void SetDataTarefa(ArrayList<Tarefa>Array_T){ // grava arquivo das tarefas
+        try{
+            PrintWriter Wfile = new PrintWriter(this.file);
+                for (Tarefa tarefas : Array_T) {
+                    
+                    Wfile.println(tarefas.toString());
+                }
+                    
+                
+            Wfile.close();
+        }catch(Exception e){
+            e.getMessage();
+        }
     }
 
 }

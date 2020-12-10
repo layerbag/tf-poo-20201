@@ -38,7 +38,15 @@ public class Gerente extends Pessoa{
         this.areaSupervisao = areaSupervisao;
     }
 
-    
-    
+    public String toString (){
+        String x = "";
 
+        x += this.getCpf() + "\n" + this.getNome() + "\n" + this.getIdade() + "\n" +
+            this.getSalario() + "\n" + this.senhaGerente + "\n" + this.areaSupervisao;
+        return x;
+    }
+    
+    public ArrayList<Funcionario> getArrayList (){
+        return this.funcionarios;
+    }
 }

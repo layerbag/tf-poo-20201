@@ -24,16 +24,23 @@ public class Main {
 
         //TEST
         
-        /*
-        Gerente g = new Gerente("2222", "chefe", 55, 5000.00, 123, "Gerente de Projetos");
-        Funcionario f = new Funcionario("5555", "JV", 20, 2500.00, 2);
-        Tarefa t = new Tarefa(555, 1, 20, false);
-        */
         
-        ArrayFuncionario.get(0).batePonto();
+        ArrayGerentes.add(new Gerente("2222", "chefe", 55, 5000.00, "123", "Gerente de Projetos"));
+        Funcionario f = new Funcionario("5555", "JV", 20, 2500.00, 2,2);
+        ArrayGerentes.get(0).cadastraFuncionario(f);
+        // JUNTA TODOS OS ARRAYS DE FUNCIONARIO DE CADA GERENTE A UM UNICO ARRAY
+        for (Gerente gerente :ArrayGerentes) {    
+            ArrayFuncionario.addAll(gerente.getArrayList());
+        }
+        
+        Tarefa t = new Tarefa(555, 1, 20, false);
+        
+        GD.SetDataGerente(ArrayGerentes);
+        FD.SetDataFuncionario(ArrayFuncionario);
+        /*ArrayFuncionario.get(0).batePonto();
         System.out.println(ArrayFuncionario.get(0).getHoraEntrada());
         ArrayFuncionario.get(0).finalizaExpediente();
-        System.out.println(ArrayGerentes.get(0).getSenhaGerente());
+        System.out.println(ArrayGerentes.get(0).getSenhaGerente());*/
 
     }
 }

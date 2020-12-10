@@ -81,5 +81,12 @@ public class Funcionario extends Pessoa{
         this.naEmpresa = naEmpresa;
     }
 
+    public String toString (){ //transforma os dados em String no formatado para o arquivo
+        String x ="";
 
+        x += this.getCpf()+ "\n" + this.getNome() + "\n" +  this.getIdade() + "\n" +
+            this.getSalario() + "\n" + this.nivel + "\n" + this.horasExtras;
+
+        return x;
+    }
 }

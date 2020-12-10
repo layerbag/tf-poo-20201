@@ -71,5 +71,10 @@ public class Tarefa {
         this.dataFinal.get(Calendar.MINUTE) + ":" +
         this.dataFinal.get(Calendar.SECOND);
     }
+
+    public String toString(){
+        return this.idTarefa + "\n" + this.nivel + "\n" + this.horasNecessarias +
+            "\n" + this.statusTarefa;
+    }
     
 }
