@@ -50,7 +50,7 @@ public class Tela extends JFrame{
     private javax.swing.JButton sair;
     private javax.swing.JTextField tituloTarefa;
 
-    //tela ferente
+    //tela gerente
     private javax.swing.JButton cadastraFuncionario;
     private javax.swing.JButton cadastraTarefa;
     private javax.swing.JButton demite;
@@ -64,10 +64,12 @@ public class Tela extends JFrame{
     private javax.swing.JButton pagamento;
     private javax.swing.JButton sairGerente;
 
-    public Tela(ArrayList<Funcionario> fun, ArrayList<Gerente> ger, ArrayList<Tarefa> tar) {
+    public Tela(ArrayList<Funcionario> fun, ArrayList<Gerente> ger, ArrayList<Tarefa> tar, Data GD, Data FD) {
         funcionarios = fun;
         gerentes = ger;
         tarefas = tar;
+       final Data gd = GD;
+       final Data fd = FD;
         
         geral.setLayout(cl);
         montaInicial();
@@ -79,13 +81,31 @@ public class Tela extends JFrame{
 
         cl.show(geral, "inicial");
 
+        WindowAdapter a = new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                try{
+                    gd.SetDataGerente(gerentes);
+                    fd.SetDataFuncionario(Data.juntaFuncionarios(gerentes));
+                    System.exit(0);
+                }catch(Exception x){
+                    x.getMessage();
+                }
+            }
+        };
+
+        tela.addWindowListener(a);
+
         tela.setLocationRelativeTo(null);
         tela.add(geral);
-        tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        tela.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         tela.pack();
         tela.setVisible(true);
         
+        
+
+        
     }
+
 
     public void montaInicial(){
         jLabel1 = new javax.swing.JLabel();
@@ -111,6 +131,7 @@ public class Tela extends JFrame{
         funcionarioBt.setText("Sou Funcionário");
         funcionarioBt.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
+                funcionarios = Data.juntaFuncionarios(gerentes);
                 String cpf = JOptionPane.showInputDialog(null, "Entre com seu CPF", "Autenticação de Funcionário", JOptionPane.QUESTION_MESSAGE);
                 if(verificaFuncionario(cpf)) {
                     instrucao.setText("Bem-Vindo " + funcionarios.get(indiceFuncionario).getNome());
@@ -511,12 +532,11 @@ public class Tela extends JFrame{
                 int result = JOptionPane.showConfirmDialog(null, myPanel, "Cadastro de Funcionário", JOptionPane.OK_CANCEL_OPTION);
                 if (result == JOptionPane.OK_OPTION) {
                     Funcionario f = new Funcionario(cpf.getText(), nome.getText(), Integer.parseInt(idade.getText()), Double.parseDouble(salario.getText()), Integer.parseInt(nivel.getText()), gerentes.get(indiceGerente).getAreaSupervisao());
-                    funcionarios.add(f);
+                    gerentes.get(indiceGerente).cadastraFuncionario(f);
                 }
                 listaFuncionarios.removeAllItems();
-                for (Funcionario funcionario : funcionarios) {
+                for (Funcionario funcionario : gerentes.get(indiceGerente).getArrayList()) {
                     listaFuncionarios.addItem(funcionario);
-                    System.out.println(funcionario.toString());
                 }
             }
         });
