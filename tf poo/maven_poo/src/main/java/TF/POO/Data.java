@@ -125,7 +125,7 @@ public class Data {
         boolean statusTarefa;
         Calendar dataInicio;
         Calendar dataFinal;
-        String temp;
+        String temp,nome,instrucao;
 
         try{
             OpenFile();
@@ -153,7 +153,10 @@ public class Data {
                 if(temp.equals("x") == true) dataFinal = null;
                 else{dataFinal.setTimeInMillis(Long.parseLong(temp));}
 
-                Array_T.add(new Tarefa(idTarefa, nivel, horasNecessarias, statusTarefa, dataInicio, dataFinal));
+                nome = scan.nextLine();
+                instrucao = scan.nextLine();
+
+                Array_T.add(new Tarefa(idTarefa, nivel, horasNecessarias, statusTarefa, dataInicio, dataFinal,nome,instrucao));
             }
             scan.close();
         }catch(Exception e){ 
@@ -184,7 +187,7 @@ public class Data {
     }
 
     public void SetDataFuncionario(ArrayList<Funcionario>Array_F) throws ErroNoFile{ //grava arquivo do funcionario
-        this.file.delete();
+        this.file.deleteOnExit();
         try{
             OpenFile();
         }catch(ErroNoFile x){
@@ -194,7 +197,7 @@ public class Data {
             PrintWriter Wfile = new PrintWriter(this.file);
                 for (Funcionario funcionario : Array_F) {
                     
-                    Wfile.println(funcionario.toString());
+                    Wfile.print(funcionario.toStringArquivo());
                 }
                     
                 

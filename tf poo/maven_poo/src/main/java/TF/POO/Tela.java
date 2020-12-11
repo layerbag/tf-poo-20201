@@ -1,3 +1,5 @@
+package TF.POO;
+
 import java.awt.CardLayout;
 
 import javax.swing.JFrame;
@@ -138,7 +140,7 @@ public class Tela extends JFrame{
                     }else JOptionPane.showMessageDialog(null, "Desculpa, CPF e/ou Senha não encontrado(s)", "Falha na autenticação", JOptionPane.INFORMATION_MESSAGE);
                 }
 
-                for (Funcionario funcionario : funcionarios) {
+                for (Funcionario funcionario : gerentes.get(indiceGerente).getArrayList()) {
                     listaFuncionarios.addItem(funcionario);
                 }
             }
@@ -492,8 +494,13 @@ public class Tela extends JFrame{
 
                 int result = JOptionPane.showConfirmDialog(null, myPanel, "Cadastro de Funcionário", JOptionPane.OK_CANCEL_OPTION);
                 if (result == JOptionPane.OK_OPTION) {
-                    Funcionario f = new Funcionario(cpf.getText(), nome.getText(), Integer.parseInt(idade.getText()), Double.parseDouble(salario.getText()), Integer.parseInt(idade.getText()));
-                    gerentes.get(indiceGerente).cadastraFuncionario(f);
+                    Funcionario f = new Funcionario(cpf.getText(), nome.getText(), Integer.parseInt(idade.getText()), Double.parseDouble(salario.getText()), Integer.parseInt(nivel.getText()), gerentes.get(indiceGerente).getAreaSupervisao());
+                    funcionarios.add(f);
+                }
+                listaFuncionarios.removeAllItems();
+                for (Funcionario funcionario : funcionarios) {
+                    listaFuncionarios.addItem(funcionario);
+                    System.out.println(funcionario.toString());
                 }
             }
         });
@@ -505,7 +512,8 @@ public class Tela extends JFrame{
                 javax.swing.JTextField id = new javax.swing.JTextField(3);
                 javax.swing.JTextField nivel = new javax.swing.JTextField(3);
                 javax.swing.JTextField horas = new javax.swing.JTextField(3);
-                javax.swing.JTextField instrucoes = new javax.swing.JTextField(15);
+                javax.swing.JTextField nome = new javax.swing.JTextField(10);
+                javax.swing.JTextField instrucoes = new javax.swing.JTextField(20);
 
                 JPanel myPanel = new JPanel();
                 myPanel.setSize(10, 80);
@@ -515,16 +523,18 @@ public class Tela extends JFrame{
                 myPanel.add(nivel);
                 myPanel.add(new javax.swing.JLabel("Horas Necessárias"));
                 myPanel.add(horas);
+                myPanel.add(new javax.swing.JLabel("Nome da Tarefa"));
+                myPanel.add(nome);
                 myPanel.add(new javax.swing.JLabel("Instruções"));
                 myPanel.add(instrucoes);
 
                 int result = JOptionPane.showConfirmDialog(null, myPanel, "Cadastro de Tarefa", JOptionPane.OK_CANCEL_OPTION);
                 if (result == JOptionPane.OK_OPTION) {
-                    Tarefa t = new Tarefa(Integer.parseInt(id.getText()), Integer.parseInt(nivel.getText()), Integer.parseInt(horas.getText()), instrucoes.getText());
-                    gerentes.get(indiceGerente).cadastraTarefa(t);
+                    Tarefa t = new Tarefa(Integer.parseInt(id.getText()), Integer.parseInt(nivel.getText()), Integer.parseInt(horas.getText()), nome.getText(), instrucoes.getText());
                     tarefas.add(t);
                 }
             }
+
         });
 
         jLabelOque.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -546,7 +556,11 @@ public class Tela extends JFrame{
         demite.setText("demitir funcionário");
         demite.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                funcionarios.remove(listaFuncionarios.getSelectedItem());
+                gerentes.get(indiceGerente).getArrayList().remove(listaFuncionarios.getSelectedItem());
+                listaFuncionarios.removeAllItems();
+                for (Funcionario funcionario : gerentes.get(indiceGerente).getArrayList()) {
+                    listaFuncionarios.addItem(funcionario);
+                }
             }
         });
 

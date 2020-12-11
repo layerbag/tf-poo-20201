@@ -23,7 +23,6 @@ public class Gerente extends Pessoa{
         this.funcionarios.remove(funcionario);
     }
 
-
     public String getSenhaGerente() {
         return this.senhaGerente;
     }

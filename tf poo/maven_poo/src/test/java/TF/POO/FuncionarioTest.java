@@ -12,7 +12,7 @@ public class FuncionarioTest {
 
     @Before
     public void setup(){
-        a = new Funcionario("5555", "JV", 20, 2500.00, 2,0,"Gerente de Projetos");
+        a = new Funcionario("5555", "JV", 20, 2500.00, 2,"Gerente de Projetos");
     }
         
     @Test

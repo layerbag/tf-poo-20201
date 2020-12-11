@@ -11,10 +11,10 @@ public class Funcionario extends Pessoa{
     private String area;
 
     //Construtor
-    public Funcionario(String cpf, String nome, int idade, double salario, int nivel, int horasExtras, String area) {
+    public Funcionario(String cpf, String nome, int idade, double salario, int nivel, String area) {
         super(cpf, nome, idade, salario);
         this.nivel = nivel;
-        this.horasExtras = horasExtras;
+        this.horasExtras = 0;
         this.naEmpresa = false;
         this.area = area;
     }
@@ -96,7 +96,7 @@ public class Funcionario extends Pessoa{
         return this.area;
     }
 
-    public String toString () { //transforma os dados em String no formatado para o arquivo
+    public String toStringArquivo () { //transforma os dados em String no formatado para o arquivo
         String x ="";
 
         x += this.getCpf()+ "\n" + this.getNome() + "\n" +  this.getIdade() + "\n" +
@@ -116,4 +116,11 @@ public class Funcionario extends Pessoa{
         x += this.naEmpresa + "\n" + this.area;
         return x;
     }
+
+
+    @Override
+    public String toString() {
+        return super.getNome();
+    }
+
 }

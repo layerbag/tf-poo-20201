@@ -3,6 +3,8 @@ package TF.POO;
 import java.util.Calendar;
 
 public class Tarefa {
+    private String nome;
+    private String instrucao;
     private int idTarefa;
     private int nivel;
     private int horasNecessarias;
@@ -12,20 +14,24 @@ public class Tarefa {
     private Calendar dataFinal;
 
 
-    public Tarefa(int idTarefa, int nivel, int horasNecessarias, boolean statusTarefa) {
+    public Tarefa(int idTarefa, int nivel, int horasNecessarias, String nome, String instrucao) {
         this.idTarefa = idTarefa;
         this.nivel = nivel;
         this.horasNecessarias = horasNecessarias;
-        this.statusTarefa = statusTarefa;
+        this.statusTarefa = false;
+        this.nome = nome;
+        this.instrucao = instrucao;
     }
 
-    public Tarefa(int idTarefa, int nivel, int horasNecessarias, boolean statusTarefa, Calendar dataInicio, Calendar dataFinal) {
+    public Tarefa(int idTarefa, int nivel, int horasNecessarias, boolean statusTarefa, Calendar dataInicio, Calendar dataFinal,String nome, String instrucao) {
         this.idTarefa = idTarefa;
         this.nivel = nivel;
         this.horasNecessarias = horasNecessarias;
         this.statusTarefa = statusTarefa;
         this.dataInicio = dataInicio;
         this.dataFinal = dataFinal;
+        this.nome = nome;
+        this.instrucao = instrucao;
     }
 
     public void arquivaTarefa(){
@@ -92,6 +98,8 @@ public class Tarefa {
 
         if(dataFinal == null) x += "x";
         else x += dataFinal.getTimeInMillis();
+
+        x += this.nome + "\n" + this.instrucao;
 
         return x;
     }
