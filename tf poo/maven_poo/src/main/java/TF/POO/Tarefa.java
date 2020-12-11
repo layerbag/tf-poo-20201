@@ -39,6 +39,24 @@ public class Tarefa {
     }
 
 
+    public String getNome() {
+        return this.nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+
+    public String getInstrucao() {
+        return this.instrucao;
+    }
+
+    public void setInstrucao(String instrucao) {
+        this.instrucao = instrucao;
+    }
+
+
     public Funcionario getFuncionario() {
         return this.funcionario;
     }
@@ -89,7 +107,7 @@ public class Tarefa {
         this.dataFinal.get(Calendar.SECOND);
     }
 
-    public String toString(){
+    public String toStringArquivo(){
         String x= this.idTarefa + "\n" + this.nivel + "\n" + this.horasNecessarias +
             "\n" + this.statusTarefa + "\n";
 
@@ -104,5 +122,9 @@ public class Tarefa {
         return x;
     }
     
-    
+    @Override
+    public String toString() {
+        return getNome();
+    }
+
 }

@@ -40,7 +40,7 @@ public class Tela extends JFrame{
     //tela funcionario
     private javax.swing.JButton checkinBt;
     private javax.swing.JButton checkoutBt;
-    private javax.swing.JComboBox<String> comboTarefas;
+    private javax.swing.JComboBox<Tarefa> comboTarefas;
     private javax.swing.JTextArea descricaoTarefa;
     private javax.swing.JButton escolheBt;
     private java.awt.Panel foto;
@@ -114,8 +114,17 @@ public class Tela extends JFrame{
                 String cpf = JOptionPane.showInputDialog(null, "Entre com seu CPF", "Autenticação de Funcionário", JOptionPane.QUESTION_MESSAGE);
                 if(verificaFuncionario(cpf)) {
                     instrucao.setText("Bem-Vindo " + funcionarios.get(indiceFuncionario).getNome());
+                    if(funcionarios.get(indiceFuncionario).getTarefa() != null){
+                        tituloTarefa.setText(funcionarios.get(indiceFuncionario).getTarefa().getNome());
+                        descricaoTarefa.setText(funcionarios.get(indiceFuncionario).getTarefa().getInstrucao());
+                        escolheBt.setEnabled(false);
+                    }
                     cl.show(geral, "funcionario");
                 }else JOptionPane.showMessageDialog(null, "Desculpa, CPF não encontrado", "Falha na autenticação", JOptionPane.INFORMATION_MESSAGE);
+
+                for (Tarefa tarefa : tarefas) {
+                    comboTarefas.addItem(tarefa);
+                }
             }
         });
 
@@ -291,13 +300,13 @@ public class Tela extends JFrame{
 
         tituloTarefa.setEditable(false);
         tituloTarefa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tituloTarefa.setText("nome @tarefa");/////////////////////////////////////////////
+        tituloTarefa.setText("");
 
         descricaoTarefa.setEditable(false);
         descricaoTarefa.setColumns(20);
         descricaoTarefa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         descricaoTarefa.setRows(5);
-        descricaoTarefa.setText("texto com instruções da @tarefa 66666666");
+        descricaoTarefa.setText("");
         descricaoTarefa.setLineWrap(true);
 
         foto.setBackground(new java.awt.Color(0, 0, 0));
@@ -318,12 +327,19 @@ public class Tela extends JFrame{
 
         labelEscolhe.setText("Escolha uma tarefa:");
 
-        comboTarefas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tarefa 1", "Tarefa 2", "Tarefa 3", "Tarefa 4" }));
 
         escolheBt.setText("Escolher");
         escolheBt.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                
+                funcionarios.get(indiceFuncionario).setTarefa(tarefas.get(comboTarefas.getSelectedIndex()));
+                tituloTarefa.setText(funcionarios.get(indiceFuncionario).getTarefa().getNome());
+                descricaoTarefa.setText(funcionarios.get(indiceFuncionario).getTarefa().getInstrucao());
+                escolheBt.setEnabled(false);
+                tarefas.remove(comboTarefas.getSelectedIndex());
+                comboTarefas.removeAllItems();
+                for (Tarefa tarefa : tarefas) {
+                    comboTarefas.addItem(tarefa);
+                }
             }
         });
 

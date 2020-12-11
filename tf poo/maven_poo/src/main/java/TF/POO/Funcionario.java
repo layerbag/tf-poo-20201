@@ -5,7 +5,7 @@ import java.util.Calendar;
 public class Funcionario extends Pessoa{
     private int nivel;
     private int horasExtras;
-    private Tarefa tarefa;
+    private Tarefa tarefa = null;
     private Calendar horaEntrada;
     private boolean naEmpresa;
     private String area;

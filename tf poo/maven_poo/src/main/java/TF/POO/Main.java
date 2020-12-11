@@ -38,9 +38,10 @@ public class Main {
         ArrayFuncionario.add(f);
         ArrayFuncionario.add(g);
 
-        
+        Tarefa t = new Tarefa(1, 2, 20, "Programação", "Programe até não ter nenhum erro ou bufg");
+        ArrayTarefas.add(t);
 
-        //Tela tela = new Tela(ArrayFuncionario, ArrayGerentes, ArrayTarefas);
+        Tela tela = new Tela(ArrayFuncionario, ArrayGerentes, ArrayTarefas);
 
         GD.SetDataGerente(ArrayGerentes);
         FD.SetDataFuncionario(ArrayFuncionario);
