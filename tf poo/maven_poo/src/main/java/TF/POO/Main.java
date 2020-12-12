@@ -24,7 +24,7 @@ public class Main {
         ArrayGerentes = GD.GetDataGerente();
         ArrayTarefas = TD.GetDataTarefas();
         ArrayFuncionario = FD.GetDataFuncionario(ArrayTarefas);
-        Data.classificaFuncionario(ArrayGerentes, ArrayFuncionario);
+        GD.classificaFuncionario(ArrayGerentes, ArrayFuncionario);
 
         //TEST
         

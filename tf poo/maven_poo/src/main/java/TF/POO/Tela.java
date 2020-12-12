@@ -21,6 +21,7 @@ public class Tela extends JFrame{
     ArrayList<Funcionario> funcionarios;
     ArrayList<Gerente> gerentes;
     ArrayList<Tarefa> tarefas;
+    ArrayList<Tarefa> tarefaSave;
 
     int indiceFuncionario = -1;
     int indiceGerente = -1;
@@ -68,6 +69,7 @@ public class Tela extends JFrame{
         funcionarios = fun;
         gerentes = ger;
         tarefas = tar;
+        tarefaSave = tar;
        final Data gd = GD;
        final Data fd = FD;
        final Data td = TD;
@@ -87,7 +89,7 @@ public class Tela extends JFrame{
                 try{
                     gd.SetDataGerente(gerentes);
                     fd.SetDataFuncionario(Data.juntaFuncionarios(gerentes));
-                    td.SetDataTarefa(tarefas);
+                    td.SetDataTarefa(tarefaSave);
                     System.exit(0);
                 }catch(Exception x){
                     x.getMessage();
@@ -358,7 +360,6 @@ public class Tela extends JFrame{
                 tituloTarefa.setText(funcionarios.get(indiceFuncionario).getTarefa().getNome());
                 descricaoTarefa.setText(funcionarios.get(indiceFuncionario).getTarefa().getInstrucao());
                 escolheBt.setEnabled(false);
-                tarefas.remove(comboTarefas.getSelectedIndex());
                 comboTarefas.removeAllItems();
                 for (Tarefa tarefa : tarefas) {
                     comboTarefas.addItem(tarefa);

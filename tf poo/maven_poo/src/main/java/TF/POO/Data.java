@@ -105,6 +105,7 @@ public class Data {
                     horaEntrada.setTimeInMillis(c);
                 }
                 naEmpresa = scan.nextBoolean();
+                scan.nextLine();
                 area = scan.nextLine();
                 Array_F.add(new Funcionario(cpf, nome, idade, salario, nivel, horasExtras, tarefa, horaEntrada, naEmpresa,area));
             }
@@ -216,7 +217,7 @@ public class Data {
     }
 
     // separa os funcionarios por area e adiciona-os ao array de funcionarios do gerente
-    public static void classificaFuncionario (ArrayList<Gerente> gerentes, ArrayList<Funcionario> funcionarios){ 
+    public void classificaFuncionario (ArrayList<Gerente> gerentes, ArrayList<Funcionario> funcionarios){ 
         for (Gerente gerente : gerentes) {
             for (Funcionario funcionario : funcionarios) {
                 if(funcionario.getArea().equals(gerente.getAreaSupervisao()) == true){
