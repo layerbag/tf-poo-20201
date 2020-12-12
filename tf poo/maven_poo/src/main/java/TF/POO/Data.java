@@ -1,7 +1,6 @@
 package TF.POO;
 
 import java.io.*;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
@@ -167,17 +166,13 @@ public class Data {
     }
     
     public void SetDataGerente(ArrayList<Gerente>Array_G) throws ErroNoFile{ //grava arquivo do gerente
-        this.file.delete();
         try{
-            OpenFile();
-        }catch(ErroNoFile x){
-            x.CorrigeErro();
-        }
-        try{
-            PrintWriter Wfile = new PrintWriter(this.file);
-                for (Gerente gerente : Array_G) {   
-                    Wfile.println(gerente.toString());
-                }
+            FileWriter gravar = new FileWriter(file, false);
+            PrintWriter Wfile = new PrintWriter(gravar);
+
+            for (Gerente gerente : Array_G) {   
+                Wfile.println(gerente.toString());
+            }
                     
                 
             Wfile.close();
@@ -187,15 +182,11 @@ public class Data {
     }
 
     public void SetDataFuncionario(ArrayList<Funcionario>Array_F) throws ErroNoFile{ //grava arquivo do funcionario
-        this.file.deleteOnExit();
         try{
-            OpenFile();
-        }catch(ErroNoFile x){
-            x.CorrigeErro();
-        }
-        try{
-            PrintWriter Wfile = new PrintWriter(this.file);
-                for (Funcionario funcionario : Array_F) {
+            FileWriter gravar = new FileWriter(file,false);
+            PrintWriter Wfile = new PrintWriter(gravar);
+
+            for (Funcionario funcionario : Array_F) {
                     
                     Wfile.println(funcionario.toStringArquivo());
                 }
@@ -208,14 +199,10 @@ public class Data {
     }
 
     public void SetDataTarefa(ArrayList<Tarefa>Array_T) throws ErroNoFile{ // grava arquivo das tarefas
-        this.file.delete();
         try{
-            OpenFile();
-        }catch(ErroNoFile x){
-            x.CorrigeErro();
-        }
-        try{
-            PrintWriter Wfile = new PrintWriter(this.file);
+            FileWriter gravar = new FileWriter(file,false);
+            PrintWriter Wfile = new PrintWriter(gravar);
+            
                 for (Tarefa tarefas : Array_T) {
                     
                     Wfile.println(tarefas.toStringArquivo());
