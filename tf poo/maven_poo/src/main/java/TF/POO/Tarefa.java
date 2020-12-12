@@ -114,8 +114,8 @@ public class Tarefa {
         if(dataInicio == null) x += "x\n";
         else x += dataInicio.getTimeInMillis();
 
-        if(dataFinal == null) x += "x";
-        else x += dataFinal.getTimeInMillis();
+        if(dataFinal == null) x += "x\n";
+        else x += dataFinal.getTimeInMillis() + "\n";
 
         x += this.nome + "\n" + this.instrucao;
 

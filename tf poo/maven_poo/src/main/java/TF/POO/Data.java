@@ -197,7 +197,7 @@ public class Data {
             PrintWriter Wfile = new PrintWriter(this.file);
                 for (Funcionario funcionario : Array_F) {
                     
-                    Wfile.print(funcionario.toStringArquivo());
+                    Wfile.println(funcionario.toStringArquivo());
                 }
                     
                 
@@ -218,7 +218,7 @@ public class Data {
             PrintWriter Wfile = new PrintWriter(this.file);
                 for (Tarefa tarefas : Array_T) {
                     
-                    Wfile.println(tarefas.toString());
+                    Wfile.println(tarefas.toStringArquivo());
                 }
                     
                 

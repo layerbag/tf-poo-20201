@@ -64,12 +64,13 @@ public class Tela extends JFrame{
     private javax.swing.JButton pagamento;
     private javax.swing.JButton sairGerente;
 
-    public Tela(ArrayList<Funcionario> fun, ArrayList<Gerente> ger, ArrayList<Tarefa> tar, Data GD, Data FD) {
+    public Tela(ArrayList<Funcionario> fun, ArrayList<Gerente> ger, ArrayList<Tarefa> tar, Data GD, Data FD,Data TD) {
         funcionarios = fun;
         gerentes = ger;
         tarefas = tar;
        final Data gd = GD;
        final Data fd = FD;
+       final Data td = TD;
         
         geral.setLayout(cl);
         montaInicial();
@@ -86,6 +87,7 @@ public class Tela extends JFrame{
                 try{
                     gd.SetDataGerente(gerentes);
                     fd.SetDataFuncionario(Data.juntaFuncionarios(gerentes));
+                    td.SetDataTarefa(tarefas);
                     System.exit(0);
                 }catch(Exception x){
                     x.getMessage();
@@ -169,7 +171,7 @@ public class Tela extends JFrame{
                         cl.show(geral, "gerente");
                     }else JOptionPane.showMessageDialog(null, "Desculpa, CPF e/ou Senha não encontrado(s)", "Falha na autenticação", JOptionPane.INFORMATION_MESSAGE);
                 }
-
+                listaFuncionarios.removeAllItems();
                 for (Funcionario funcionario : gerentes.get(indiceGerente).getArrayList()) {
                     listaFuncionarios.addItem(funcionario);
                 }
