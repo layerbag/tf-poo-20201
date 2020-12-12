@@ -150,6 +150,15 @@ public class Tela extends JFrame{
                         descricaoTarefa.setText(null);
                         escolheBt.setEnabled(true);
                     }
+                    if(indiceFuncionario != -1){
+                        if(funcionarios.get(indiceFuncionario).isNaEmpresa()){
+                            checkinBt.setEnabled(false);
+                            checkoutBt.setEnabled(true);
+                        }else{
+                            checkinBt.setEnabled(true);
+                            checkoutBt.setEnabled(false);
+                        }
+                    }
                     cl.show(geral, "funcionario");
                 }else JOptionPane.showMessageDialog(null, "Desculpa, CPF não encontrado", "Falha na autenticação", JOptionPane.INFORMATION_MESSAGE);
                 comboTarefas.removeAllItems();
@@ -280,16 +289,6 @@ public class Tela extends JFrame{
         comboTarefas = new javax.swing.JComboBox<>();
         escolheBt = new javax.swing.JButton();
         sair = new javax.swing.JButton();
-
-        if(indiceFuncionario != -1){
-            if(funcionarios.get(indiceFuncionario).isNaEmpresa()){
-                checkinBt.setEnabled(false);
-                checkoutBt.setEnabled(true);
-            }else{
-                checkinBt.setEnabled(true);
-                checkoutBt.setEnabled(false);
-            }
-        }
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(392, 320));

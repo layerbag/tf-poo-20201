@@ -3,7 +3,7 @@ viniboy
 21
 3000.0
 1
-0
+3
 13
 x
 false

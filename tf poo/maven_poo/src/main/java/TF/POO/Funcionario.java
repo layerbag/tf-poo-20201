@@ -33,19 +33,25 @@ public class Funcionario extends Pessoa{
 
     //Métodos essenciais
     public double calculaSalario(double valorHoraExtra){
-        return super.getSalario() + valorHoraExtra*this.horasExtras;
+        double x = super.getSalario() + valorHoraExtra*this.horasExtras;
+        this.horasExtras = 0;
+        return x;
     }
 
     public void batePonto(){
         this.horaEntrada = Calendar.getInstance(); //instancia calendar da hora de entrada
+        this.naEmpresa = true;
     }
 
     public void finalizaExpediente(){
         Calendar c = Calendar.getInstance(); //instancia calendar da hora de saida
         c.add(Calendar.HOUR_OF_DAY, 9); //adiciona 9 horas para teste
-        int horas = c.get(Calendar.HOUR_OF_DAY) - this.horaEntrada.get(Calendar.HOUR_OF_DAY); //calcula horas trabalhadas
+        c.add(Calendar.HOUR_OF_DAY,-horaEntrada.get(Calendar.HOUR_OF_DAY));
+        int horas = c.get(Calendar.HOUR_OF_DAY);//calcula horas trabalhadas
         if(horas > 8)this.horasExtras += horas - 8; //se a carga horária passar de 8 adicionamos em horas extras
-        System.out.println("horas trabalhadas: " + horas + "horas extra: " + (horas-8));
+        System.out.println("horas trabalhadas: " + horas + " horas extra: " + (horas-8));
+        this.horaEntrada = null;
+        this.naEmpresa = false;
     }
 
     public void recebeTarefa(){
