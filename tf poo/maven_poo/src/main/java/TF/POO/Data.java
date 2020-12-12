@@ -93,6 +93,7 @@ public class Data {
                     for (Tarefa tarefa_2 : tarefas) {
                         if(tarefa_2.getIdTarefa() == Integer.parseInt(temp)){ 
                             tarefa = tarefa_2;
+                            tarefas.remove(tarefa);
                             break;
                         }
                     }
@@ -217,7 +218,7 @@ public class Data {
     }
 
     // separa os funcionarios por area e adiciona-os ao array de funcionarios do gerente
-    public void classificaFuncionario (ArrayList<Gerente> gerentes, ArrayList<Funcionario> funcionarios){ 
+    public static void classificaFuncionario (ArrayList<Gerente> gerentes, ArrayList<Funcionario> funcionarios){ 
         for (Gerente gerente : gerentes) {
             for (Funcionario funcionario : funcionarios) {
                 if(funcionario.getArea().equals(gerente.getAreaSupervisao()) == true){
@@ -236,6 +237,18 @@ public class Data {
         }
 
         return funcionarios;
+    }
+
+    public static ArrayList<Tarefa> juntaTarefas(ArrayList<Funcionario> funcionarios){
+        ArrayList<Tarefa> tarefas = new ArrayList<Tarefa>();
+
+        for (Funcionario funcionario : funcionarios) {
+            if(funcionario.getTarefa() != null){
+                tarefas.add(funcionario.getTarefa());
+            }
+        }
+
+        return tarefas;
     }
 
     

@@ -24,7 +24,7 @@ public class Main {
         ArrayGerentes = GD.GetDataGerente();
         ArrayTarefas = TD.GetDataTarefas();
         ArrayFuncionario = FD.GetDataFuncionario(ArrayTarefas);
-        GD.classificaFuncionario(ArrayGerentes, ArrayFuncionario);
+        Data.classificaFuncionario(ArrayGerentes, ArrayFuncionario);
 
         //TEST
         
@@ -47,11 +47,6 @@ public class Main {
 
         Tela tela = new Tela(ArrayFuncionario, ArrayGerentes, ArrayTarefas,GD,FD,TD);
 
-        for (Gerente gerente: ArrayGerentes) {
-            for (Funcionario funcionario : gerente.getArrayList()) {
-                System.out.println(funcionario.toString());
-            }
-        }
 
       //  ArrayFuncionario = Data.juntaFuncionarios(ArrayGerentes);
 

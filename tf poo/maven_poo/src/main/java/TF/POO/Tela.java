@@ -69,7 +69,6 @@ public class Tela extends JFrame{
         funcionarios = fun;
         gerentes = ger;
         tarefas = tar;
-        tarefaSave = tar;
        final Data gd = GD;
        final Data fd = FD;
        final Data td = TD;
@@ -87,9 +86,11 @@ public class Tela extends JFrame{
         WindowAdapter a = new WindowAdapter(){
             public void windowClosing(WindowEvent e){
                 try{
+                    funcionarios = Data.juntaFuncionarios(gerentes);
+                    tarefas = Data.juntaTarefas(funcionarios);
                     gd.SetDataGerente(gerentes);
-                    fd.SetDataFuncionario(Data.juntaFuncionarios(gerentes));
-                    td.SetDataTarefa(tarefaSave);
+                    fd.SetDataFuncionario(funcionarios);
+                    td.SetDataTarefa(tarefas);
                     System.exit(0);
                 }catch(Exception x){
                     x.getMessage();
@@ -143,10 +144,15 @@ public class Tela extends JFrame{
                         tituloTarefa.setText(funcionarios.get(indiceFuncionario).getTarefa().getNome());
                         descricaoTarefa.setText(funcionarios.get(indiceFuncionario).getTarefa().getInstrucao());
                         escolheBt.setEnabled(false);
+                        tarefas.remove(funcionarios.get(indiceFuncionario).getTarefa());
+                    }else{
+                        tituloTarefa.setText(null);
+                        descricaoTarefa.setText(null);
+                        escolheBt.setEnabled(true);
                     }
                     cl.show(geral, "funcionario");
                 }else JOptionPane.showMessageDialog(null, "Desculpa, CPF não encontrado", "Falha na autenticação", JOptionPane.INFORMATION_MESSAGE);
-
+                comboTarefas.removeAllItems();
                 for (Tarefa tarefa : tarefas) {
                     comboTarefas.addItem(tarefa);
                 }
@@ -360,6 +366,7 @@ public class Tela extends JFrame{
                 tituloTarefa.setText(funcionarios.get(indiceFuncionario).getTarefa().getNome());
                 descricaoTarefa.setText(funcionarios.get(indiceFuncionario).getTarefa().getInstrucao());
                 escolheBt.setEnabled(false);
+                tarefas.remove(comboTarefas.getSelectedIndex());
                 comboTarefas.removeAllItems();
                 for (Tarefa tarefa : tarefas) {
                     comboTarefas.addItem(tarefa);
