@@ -6,3 +6,11 @@ x
 x
 achar bugs
 se vira
+14
+2
+20
+false
+x
+x
+teste
+teste

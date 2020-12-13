@@ -18,3 +18,13 @@ x
 x
 false
 Gerente de Projetos
+14
+João victor
+20
+2500.0
+2
+1
+14
+x
+false
+produção

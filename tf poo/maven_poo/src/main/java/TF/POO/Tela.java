@@ -87,7 +87,7 @@ public class Tela extends JFrame{
             public void windowClosing(WindowEvent e){
                 try{
                     funcionarios = Data.juntaFuncionarios(gerentes);
-                    tarefas = Data.juntaTarefas(funcionarios);
+                    tarefas.addAll(Data.juntaTarefas(funcionarios));
                     gd.SetDataGerente(gerentes);
                     fd.SetDataFuncionario(funcionarios);
                     td.SetDataTarefa(tarefas);
@@ -144,7 +144,6 @@ public class Tela extends JFrame{
                         tituloTarefa.setText(funcionarios.get(indiceFuncionario).getTarefa().getNome());
                         descricaoTarefa.setText(funcionarios.get(indiceFuncionario).getTarefa().getInstrucao());
                         escolheBt.setEnabled(false);
-                        tarefas.remove(funcionarios.get(indiceFuncionario).getTarefa());
                     }else{
                         tituloTarefa.setText(null);
                         descricaoTarefa.setText(null);
@@ -160,10 +159,14 @@ public class Tela extends JFrame{
                         }
                     }
                     cl.show(geral, "funcionario");
+                }else if(cpf == null){
+                    
                 }else JOptionPane.showMessageDialog(null, "Desculpa, CPF não encontrado", "Falha na autenticação", JOptionPane.INFORMATION_MESSAGE);
                 comboTarefas.removeAllItems();
                 for (Tarefa tarefa : tarefas) {
-                    comboTarefas.addItem(tarefa);
+                    if(tarefa.getNivel() == funcionarios.get(indiceFuncionario).getNivel()){
+                        comboTarefas.addItem(tarefa);
+                    }
                 }
             }
         });
@@ -186,11 +189,11 @@ public class Tela extends JFrame{
                     if(verificaGerente(cpf.getText(), senha.getText())){
                         jLabelBemVindo.setText("Bem-Vindo " + gerentes.get(indiceGerente).getNome());
                         cl.show(geral, "gerente");
+                        listaFuncionarios.removeAllItems();
+                        for (Funcionario funcionario : gerentes.get(indiceGerente).getArrayList()) {
+                            listaFuncionarios.addItem(funcionario);
+                        }
                     }else JOptionPane.showMessageDialog(null, "Desculpa, CPF e/ou Senha não encontrado(s)", "Falha na autenticação", JOptionPane.INFORMATION_MESSAGE);
-                }
-                listaFuncionarios.removeAllItems();
-                for (Funcionario funcionario : gerentes.get(indiceGerente).getArrayList()) {
-                    listaFuncionarios.addItem(funcionario);
                 }
             }
         });
