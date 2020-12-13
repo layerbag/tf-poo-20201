@@ -18,18 +18,26 @@ public class FuncionarioTest {
     @Test
     public void testCalculaSalario() {
         double x;
-        assertEquals(2550, a.calculaSalario(25),25);
+        assertEquals(2550, a.calculaSalario(25),50);
     }
 
     @Test
     public void testFinalizaExpediente(){
         a.batePonto();
+        assertEquals(true, a.isNaEmpresa());
         a.finalizaExpediente();
-        Calendar c = Calendar.getInstance();
+        
 
         assertEquals(1, a.getHorasExtras());
+        assertEquals(false, a.isNaEmpresa());
+
     }
 
-    
+    @Test
+    public void testGetHoraEntrada(){
+        a.batePonto();
+        Calendar c = Calendar.getInstance();
+        assertEquals(c.get(11) +":"+ c.get(12) + ":" + c.get(13),a.getHoraEntrada());
+    }
 }
     

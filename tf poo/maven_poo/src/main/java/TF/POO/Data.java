@@ -205,6 +205,7 @@ public class Data {
             FileWriter gravar = new FileWriter(file,false);
             PrintWriter Wfile = new PrintWriter(gravar);
             
+            
                 for (Tarefa tarefas : Array_T) {
                     
                     Wfile.println(tarefas.toStringArquivo());
@@ -249,6 +250,16 @@ public class Data {
         }
 
         return tarefas;
+    }
+
+    public static ArrayList<Tarefa> retornaTarefasConcluidas (ArrayList<Tarefa> tarefas){
+        ArrayList<Tarefa> tarefasC = new ArrayList<Tarefa>();
+
+        for (Tarefa tarefa : tarefas) {
+            if(tarefa.getStatusTarefa()) tarefasC.add(tarefa);
+        }
+
+        return tarefasC;
     }
 
     
