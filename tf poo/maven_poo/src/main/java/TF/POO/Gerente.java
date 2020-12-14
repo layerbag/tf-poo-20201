@@ -15,12 +15,22 @@ public class Gerente extends Pessoa{
     }
 
 
-    public void cadastraFuncionario(Funcionario funcionario){
-        this.funcionarios.add(funcionario);
+    public boolean cadastraFuncionario(Funcionario funcionario){
+        try{
+            this.funcionarios.add(funcionario);
+            return true;
+        }catch(Exception e){
+            return false;
+        }
     }
 
-    public void removeFuncionarios(Funcionario funcionario){
-        this.funcionarios.remove(funcionario);
+    public boolean removeFuncionarios(Funcionario funcionario){
+        try{
+            this.funcionarios.remove(funcionario);
+            return true;
+        }catch(Exception e){
+            return false;
+        }
     }
 
     public String getSenhaGerente() {

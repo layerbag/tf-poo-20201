@@ -63,6 +63,7 @@ public class FuncionarioTela extends javax.swing.JFrame {
         labelTarefa.setMaximumSize(new java.awt.Dimension(1000, 15));
 
         tituloTarefa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tituloTarefa.setEditable(false);
 
         descricaoTarefa.setEditable(false);
         descricaoTarefa.setColumns(20);
@@ -181,15 +182,13 @@ public class FuncionarioTela extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void escolheBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escolheBtActionPerformed
-        f.setTarefa(tarefas.get(comboTarefas.getSelectedIndex()));
+        Tarefa x = (Tarefa)comboTarefas.getSelectedItem();
+        x.setStatusTarefa(true);
+        f.setTarefa((Tarefa)comboTarefas.getSelectedItem());
         tituloTarefa.setText(f.getTarefa().getNome());
         descricaoTarefa.setText(f.getTarefa().getInstrucao());
         escolheBt.setEnabled(false);
-        tarefas.remove(comboTarefas.getSelectedIndex());
-        comboTarefas.removeAllItems();
-        for (Tarefa tarefa : tarefas) {
-            comboTarefas.addItem(tarefa);
-        }
+        iniciaComboTarefa();
     }//GEN-LAST:event_escolheBtActionPerformed
 
     private void checkinBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkinBtActionPerformed
@@ -199,12 +198,17 @@ public class FuncionarioTela extends javax.swing.JFrame {
     }//GEN-LAST:event_checkinBtActionPerformed
 
     private void checkoutBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutBtActionPerformed
-        if(f.finalizaExpediente()){
-            tarefas.add(f.getTarefa());
-            f.setTarefa(null);
-        }
+        f.finalizaExpediente();
         checkinBt.setEnabled(true);
         checkoutBt.setEnabled(false);
+        if(f.getTarefa() == null){
+            tituloTarefa.setText(null);
+            descricaoTarefa.setText(null);
+            for (Tarefa tarefa : tarefas) {
+                if(tarefa.getHorasNecessarias() < 0) tarefas.remove(tarefa);
+            }
+        }
+        
     }//GEN-LAST:event_checkoutBtActionPerformed
 
     private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
@@ -229,13 +233,20 @@ public class FuncionarioTela extends javax.swing.JFrame {
             checkinBt.setEnabled(true);
             checkoutBt.setEnabled(false);
         }
+        
+        iniciaComboTarefa();
+        this.setVisible(true);
+    }
+
+    public void iniciaComboTarefa(){
         comboTarefas.removeAllItems();
         for (Tarefa tarefa : tarefas) {
             if (tarefa.getNivel() == f.getNivel()) {
-                comboTarefas.addItem(tarefa);
+                if(tarefa.getStatusTarefa() == false){
+                    comboTarefas.addItem(tarefa);
+                }
             }
         }
-        this.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

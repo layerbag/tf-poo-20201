@@ -51,7 +51,6 @@ public class TelaInicial extends javax.swing.JFrame {
             public void windowClosing(WindowEvent e){
                 try{
                     funcionarios = Data.juntaFuncionarios(gerentes);
-                    tarefas.addAll(Data.juntaTarefas(funcionarios));
                     gd.SetDataGerente(gerentes);
                     fd.SetDataFuncionario(funcionarios);
                     td.SetDataTarefa(tarefas);

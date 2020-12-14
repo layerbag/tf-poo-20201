@@ -43,19 +43,21 @@ public class Funcionario extends Pessoa{
         this.naEmpresa = true;
     }
 
-    public boolean finalizaExpediente(){
+    public void finalizaExpediente(){
         Calendar c = Calendar.getInstance(); //instancia calendar da hora de saida
         c.add(Calendar.HOUR_OF_DAY, 9); //adiciona 9 horas para teste
-        c.add(Calendar.HOUR_OF_DAY,-horaEntrada.get(Calendar.HOUR_OF_DAY));
+        c.add(Calendar.HOUR_OF_DAY,-horaEntrada.get(Calendar.HOUR_OF_DAY));  
         int horas = c.get(Calendar.HOUR_OF_DAY);//calcula horas trabalhadas
-        this.tarefa.setHorasNecessarias(this.tarefa.getHorasNecessarias() - horas);
-        if(this.tarefa.getHorasNecessarias() < 0) this.tarefa.setStatusTarefa(true);
+
+        if(this.tarefa != null){
+            this.tarefa.setHorasNecessarias(this.tarefa.getHorasNecessarias() - horas); //diminui as horas da tarefa
+            if(this.tarefa.getHorasNecessarias() < 0) this.tarefa = null;   //remove a tarefa caso tenha atingido as horas necessarias
+        }
         if(horas > 8)this.horasExtras += horas - 8; //se a carga horária passar de 8 adicionamos em horas extras
         System.out.println("horas trabalhadas: " + horas + " horas extra: " + (horas-8));
         this.horaEntrada = null;
         this.naEmpresa = false;
 
-        return this.tarefa.getStatusTarefa();
     }
 
     //Gets e Sets
@@ -126,7 +128,13 @@ public class Funcionario extends Pessoa{
         String r = "Nome: " + this.getNome() +
                 "\nNível: " + this.getNivel() +
                 "\nHoras Extras deste mês: " + this.getHorasExtras();
-        if(this.naEmpresa) r += "\nTarefa atual: " + this.getTarefa().getNome() + " || ID: " + this.getTarefa().getIdTarefa();
+        try{
+            if(this.naEmpresa == true) r += "\nTarefa atual: " + this.getTarefa().getNome() + " || ID: " + this.getTarefa().getIdTarefa();
+            
+        }catch(Exception e){
+            e.getMessage();
+            
+        }
         return r;
     }
 
