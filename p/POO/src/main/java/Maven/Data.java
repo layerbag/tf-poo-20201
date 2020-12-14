@@ -29,8 +29,8 @@ public class Data {
         String cpf;
         String nome;
         int idade;
-        double salario;
-        String senhaGerente;
+        String salario;     // PASSAMOS HORAS, TENTANDO RESOLVER PQ O PROGRAMA FUNCIONAVA NO PC DO GABRIEL E NOS DEMAIS NÃO, NO FINAL DESCOBRIMOS QUE ERA PROBLEMA DE COMPATIBILIDADE DE LINGUAGEM DO WINDOWS
+        String senhaGerente;    
         String areaSupervisao;
 
         try{
@@ -44,12 +44,13 @@ public class Data {
                cpf = scan.nextLine();
                nome = scan.nextLine();
                idade = scan.nextInt();
-               salario = scan.nextDouble();
                scan.nextLine();
+               salario = scan.nextLine();
+               salario = salario.replaceAll(",", ".");
                senhaGerente = scan.nextLine();
                areaSupervisao = scan.nextLine();
-
-               Array_G.add(new Gerente(cpf, nome, idade, salario, senhaGerente, areaSupervisao));
+               Double temp = Double.parseDouble(salario);
+               Array_G.add(new Gerente(cpf, nome, idade,temp, senhaGerente, areaSupervisao));
             }
             scan.close();
         }catch(Exception e){ 
@@ -63,7 +64,7 @@ public class Data {
         String cpf;
         String nome;
         int idade;
-        double salario;
+        String salario;
         int nivel;
         int horasExtras;
         Tarefa tarefa;
@@ -84,7 +85,9 @@ public class Data {
                cpf = scan.nextLine();
                nome = scan.nextLine();
                idade = scan.nextInt();
-               salario = scan.nextDouble();
+               scan.nextLine();
+               salario = scan.nextLine();
+               salario = salario.replace(",",".");
                nivel = scan.nextInt();
                horasExtras = scan.nextInt();
                scan.nextLine();
@@ -108,7 +111,7 @@ public class Data {
                 naEmpresa = scan.nextBoolean();
                 scan.nextLine();
                 area = scan.nextLine();
-                Array_F.add(new Funcionario(cpf, nome, idade, salario, nivel, horasExtras, tarefa, horaEntrada, naEmpresa,area));
+                Array_F.add(new Funcionario(cpf, nome, idade,  Double.parseDouble(salario), nivel, horasExtras, tarefa, horaEntrada, naEmpresa,area));
             }
             scan.close();
         }catch(Exception e){ 

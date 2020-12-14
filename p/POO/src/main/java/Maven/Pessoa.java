@@ -1,8 +1,5 @@
-<<<<<<< Updated upstream:tf poo/Pessoa.java
-=======
 package Maven;
 
->>>>>>> Stashed changes:p/POO/src/main/java/Maven/Pessoa.java
 public abstract class Pessoa {
     private String cpf;
     private String nome;
@@ -46,8 +43,8 @@ public abstract class Pessoa {
         this.idade = idade;
     }
 
-    public double getSalario() {
-        return this.salario;
+    public String getSalario() {
+        return "" + this.salario;
     }
 
     public void setSalario(double salario) {

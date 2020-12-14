@@ -33,7 +33,7 @@ public class Funcionario extends Pessoa{
 
     //Métodos essenciais
     public double calculaSalario(double valorHoraExtra){
-        double x = super.getSalario() + valorHoraExtra*this.horasExtras;
+        double x = Double.parseDouble(super.getSalario()) + valorHoraExtra*this.horasExtras;
         this.horasExtras = 0;
         return x;
     }

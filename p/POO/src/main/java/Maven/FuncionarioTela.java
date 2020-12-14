@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 public class FuncionarioTela extends javax.swing.JFrame {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private ArrayList<Tarefa> tarefas;
     Funcionario f;
 

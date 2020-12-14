@@ -9,7 +9,6 @@ public class Tarefa {
     private int nivel;
     private int horasNecessarias;
     private boolean statusTarefa;
-    private Funcionario funcionario;
     private Calendar dataInicio;
     private Calendar dataFinal;
 
@@ -56,10 +55,6 @@ public class Tarefa {
         this.instrucao = instrucao;
     }
 
-
-    public Funcionario getFuncionario() {
-        return this.funcionario;
-    }
 
     public int getIdTarefa() {
         return this.idTarefa;
