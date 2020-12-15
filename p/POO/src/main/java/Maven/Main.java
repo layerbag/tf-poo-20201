@@ -7,12 +7,9 @@ public class Main {
     public static void main(String[] args) throws ErroNoFile {
         // ARQUIVOS
         //declarar arquivos
-        File GData = new File("GerenteData.txt");
         File FData = new File("FuncionarioData.txt");
         File TData = new File("TarefaData.txt");
-        System.out.println(GData.getAbsolutePath());
         // contrutor dado
-        Data GD = new Data(GData);
         Data FD = new Data(FData);
         Data TD = new Data(TData);
         //Array
@@ -20,12 +17,13 @@ public class Main {
         ArrayList<Funcionario> arrayFuncionario = new ArrayList<>();
         ArrayList<Tarefa> arrayTarefas = new ArrayList<>();
 
-        arrayGerentes = GD.GetDataGerente();
+        arrayGerentes.add(new Gerente("1234", "Altino",30,10000.00,"123","Gerente de Projetos"));
+        arrayGerentes.add(new Gerente("4321", "Outro Chefe",30,7000.00,"123","produção"));
         arrayTarefas = TD.GetDataTarefas();
         arrayFuncionario = FD.GetDataFuncionario(arrayTarefas);
         Data.classificaFuncionario(arrayGerentes, arrayFuncionario);
 
-        TelaInicial telaInicial = new TelaInicial(arrayFuncionario, arrayGerentes, arrayTarefas,GD,FD,TD);
+        TelaInicial telaInicial = new TelaInicial(arrayFuncionario, arrayGerentes, arrayTarefas,FD,TD);
         telaInicial.setLocationRelativeTo(null);
         telaInicial.setVisible(true);
 

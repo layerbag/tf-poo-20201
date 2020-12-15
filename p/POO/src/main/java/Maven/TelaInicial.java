@@ -16,15 +16,13 @@ public class TelaInicial extends javax.swing.JFrame {
     private ArrayList<Funcionario> funcionarios;
     private ArrayList<Gerente> gerentes;
     private ArrayList<Tarefa> tarefas;
-    final Data gd ;
     final Data fd ;
     final Data td ;
 
-    public TelaInicial(ArrayList<Funcionario> fun, ArrayList<Gerente> ger, ArrayList<Tarefa> tar, Data GD, Data FD,Data TD) {
+    public TelaInicial(ArrayList<Funcionario> fun, ArrayList<Gerente> ger, ArrayList<Tarefa> tar, Data FD,Data TD) {
         this.funcionarios = fun;
         this.gerentes = ger;
         this.tarefas = tar;
-        this.gd = GD;
         this.fd = FD;
         this.td = TD;
         initComponents();
@@ -50,7 +48,6 @@ public class TelaInicial extends javax.swing.JFrame {
             public void windowClosing(WindowEvent e){
                 try{
                     funcionarios = Data.juntaFuncionarios(gerentes);
-                    gd.SetDataGerente(gerentes);
                     fd.SetDataFuncionario(funcionarios);
                     td.SetDataTarefa(tarefas);
                     System.exit(0);
