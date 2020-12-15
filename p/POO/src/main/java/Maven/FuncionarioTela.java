@@ -205,6 +205,7 @@ public class FuncionarioTela extends javax.swing.JFrame {
         f.batePonto();
         checkoutBt.setEnabled(true);
         checkinBt.setEnabled(false);
+        escolheBt.setEnabled(true);
     }//GEN-LAST:event_checkinBtActionPerformed
 
     private void checkoutBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutBtActionPerformed
@@ -243,7 +244,7 @@ public class FuncionarioTela extends javax.swing.JFrame {
             checkinBt.setEnabled(true);
             checkoutBt.setEnabled(false);
         }
-        
+        escolheBt.setEnabled(false);
         iniciaComboTarefa();
         this.setVisible(true);
     }

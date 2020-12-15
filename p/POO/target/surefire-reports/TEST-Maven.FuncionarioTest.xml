@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="Maven.FuncionarioTest" time="0.216" tests="4" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="Maven.FuncionarioTest" time="0.083" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="15"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\AdoptOpenJDK\jdk-15.0.1.9-hotspot\bin"/>
-    <property name="sun.java.command" value="C:\Users\gabri\AppData\Local\Temp\surefire8846346666342172696\surefirebooter14038878087308840591.jar C:\Users\gabri\AppData\Local\Temp\surefire8846346666342172696 2020-12-14T21-31-29_723-jvmRun1 surefire13796498198456829614tmp surefire_05449214629198777930tmp"/>
+    <property name="sun.java.command" value="C:\Users\gabri\AppData\Local\Temp\surefire14228217526646096750\surefirebooter12941726527385949088.jar C:\Users\gabri\AppData\Local\Temp\surefire14228217526646096750 2020-12-14T21-59-56_707-jvmRun1 surefire2542592248225077291tmp surefire_08377352688568024751tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\gabri\OneDrive\Documentos\GitHub\tf-poo-20201\p\POO\target\test-classes;C:\Users\gabri\OneDrive\Documentos\GitHub\tf-poo-20201\p\POO\target\classes;C:\Users\gabri\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\gabri\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\gabri\AppData\Local\Temp\surefire8846346666342172696\surefirebooter14038878087308840591.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\gabri\AppData\Local\Temp\surefire14228217526646096750\surefirebooter12941726527385949088.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="15.0.1+9"/>
@@ -56,8 +56,8 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="59.0"/>
   </properties>
-  <testcase name="testCalculaSalario" classname="Maven.FuncionarioTest" time="0.003"/>
+  <testcase name="testCalculaSalario" classname="Maven.FuncionarioTest" time="0.007"/>
   <testcase name="testToString" classname="Maven.FuncionarioTest" time="0"/>
   <testcase name="testBatePonto" classname="Maven.FuncionarioTest" time="0"/>
-  <testcase name="testToStringConsulta" classname="Maven.FuncionarioTest" time="0.012"/>
+  <testcase name="testToStringConsulta" classname="Maven.FuncionarioTest" time="0.006"/>
 </testsuite>
