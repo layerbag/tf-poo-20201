@@ -17,7 +17,7 @@ public class FuncionarioTela extends javax.swing.JFrame {
         initComponents();
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -33,6 +33,7 @@ public class FuncionarioTela extends javax.swing.JFrame {
         comboTarefas = new javax.swing.JComboBox<Tarefa>();
         escolheBt = new javax.swing.JButton();
         sair = new javax.swing.JButton();
+        labelFoto = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -79,16 +80,21 @@ public class FuncionarioTela extends javax.swing.JFrame {
         foto.setMaximumSize(new java.awt.Dimension(99, 132));
         foto.setMinimumSize(new java.awt.Dimension(99, 132));
         foto.setPreferredSize(new java.awt.Dimension(99, 132));
+        labelFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("funcionarioCerto.png")));
 
         javax.swing.GroupLayout fotoLayout = new javax.swing.GroupLayout(foto);
         foto.setLayout(fotoLayout);
         fotoLayout.setHorizontalGroup(
             fotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 99, Short.MAX_VALUE)
+            .addGroup(fotoLayout.createSequentialGroup()
+                .addComponent(labelFoto)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         fotoLayout.setVerticalGroup(
             fotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 132, Short.MAX_VALUE)
+            .addGroup(fotoLayout.createSequentialGroup()
+                .addComponent(labelFoto)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         labelEscolhe.setText("Escolha uma tarefa:");
@@ -266,5 +272,6 @@ public class FuncionarioTela extends javax.swing.JFrame {
     private javax.swing.JLabel labelTarefa;
     private javax.swing.JButton sair;
     private javax.swing.JTextField tituloTarefa;
+    private javax.swing.JLabel labelFoto;
     // End of variables declaration//GEN-END:variables
 }

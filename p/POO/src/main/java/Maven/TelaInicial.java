@@ -1,8 +1,4 @@
 package Maven;
-
-import java.awt.CardLayout;
-
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -11,6 +7,10 @@ import java.util.ArrayList;
 
 public class TelaInicial extends javax.swing.JFrame {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private int indiceFuncionario;
     private int indiceGerente;
     private ArrayList<Funcionario> funcionarios;
@@ -19,7 +19,6 @@ public class TelaInicial extends javax.swing.JFrame {
     final Data gd ;
     final Data fd ;
     final Data td ;
-    private boolean visibilidade;
 
     public TelaInicial(ArrayList<Funcionario> fun, ArrayList<Gerente> ger, ArrayList<Tarefa> tar, Data GD, Data FD,Data TD) {
         this.funcionarios = fun;
@@ -32,7 +31,7 @@ public class TelaInicial extends javax.swing.JFrame {
         
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 

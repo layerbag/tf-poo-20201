@@ -38,6 +38,7 @@ public class GerenteTela extends javax.swing.JFrame {
         listaFuncionarios = new javax.swing.JComboBox<Funcionario>();
         consultaFuncionario = new javax.swing.JButton();
         consultaTodosFuncionarios = new javax.swing.JButton();
+        labelFoto = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -51,15 +52,21 @@ public class GerenteTela extends javax.swing.JFrame {
         fotoGerente.setMaximumSize(new java.awt.Dimension(99, 132));
         fotoGerente.setMinimumSize(new java.awt.Dimension(99, 132));
 
+        labelFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("gerenteCerto.jpg"))); // NOI18N
+
         javax.swing.GroupLayout fotoGerenteLayout = new javax.swing.GroupLayout(fotoGerente);
         fotoGerente.setLayout(fotoGerenteLayout);
         fotoGerenteLayout.setHorizontalGroup(
             fotoGerenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 99, Short.MAX_VALUE)
+            .addGroup(fotoGerenteLayout.createSequentialGroup()
+                .addComponent(labelFoto)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         fotoGerenteLayout.setVerticalGroup(
             fotoGerenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 132, Short.MAX_VALUE)
+            .addGroup(fotoGerenteLayout.createSequentialGroup()
+                .addComponent(labelFoto)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         cadastraFuncionario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -336,5 +343,6 @@ public class GerenteTela extends javax.swing.JFrame {
     private javax.swing.JComboBox<Funcionario> listaFuncionarios;
     private javax.swing.JButton pagamento;
     private javax.swing.JButton sairGerente;
+    private javax.swing.JLabel labelFoto;
     // End of variables declaration//GEN-END:variables
 }
