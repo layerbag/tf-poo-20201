@@ -290,7 +290,8 @@ public class GerenteTela extends javax.swing.JFrame {
 
     private void pagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagamentoActionPerformed
         double v = Double.parseDouble(JOptionPane.showInputDialog(null, "Qual o valor da hora extra?"));
-        g.getArrayList().get(listaFuncionarios.getSelectedIndex()).calculaSalario(v);
+        v = g.getArrayList().get(listaFuncionarios.getSelectedIndex()).calculaSalario(v);
+        JOptionPane.showMessageDialog(null, v);
     }//GEN-LAST:event_pagamentoActionPerformed
 
     private void demiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_demiteActionPerformed
